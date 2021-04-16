@@ -1,0 +1,49 @@
+Shop 
+
+show() - relatedproducts must be in the same category as selected products *
+Deal with null in images column *
+Finish with product_alt and make it product *
+Investigate index -> product take(20) Should be ::all()? *
+
+Home Page
+
+Added msg not working on products, probably because of carousel. Disable msg. Make new msg below/above div *
+Carousel should pick random category (low priority) also consider removing carousel in fvr of static * (Reconsidered)
+
+Product page
+
+Finish add to cart functionality *
+Gallery functionality *
+
+General
+
+Figure out Tax. Rate is currently set to 0. * (Reconsidered)
+Fix nav bar. Let active link reflect current page. *
+Only show products where available == 1 *
+Find ideal dimensions for images *
+Reset password functionality 
+Paginate search results *
+Validate that qty (in p.b.p and c.b.p) is btwn 1 & 5
+Reconsider active link code * (Reconsidered)
+Recheck multiple category logic
+
+Checkout
+
+Disable button after click (use JS)
+Validate details form
+Autofill email
+Thank you page
+Acknowlegment email
+
+Cart
+
+Qty functionality
+Success msg when qty updated
+
+Auth
+
+Login/Register redirect to previous page
+
+ProductsController 
+
+Show categories in view mode
