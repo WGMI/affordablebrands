@@ -4,7 +4,7 @@
 <!-- Shopping Cart Section Begin -->
 <section class="checkout-section spad">
     <div class="container">
-        <form action="{{url('checkout')}}" method="POST" class="checkout-form">
+        <form action="{{url('checkout')}}" method="POST" class="checkout-form" id="checkout">
             @csrf
                 @if(session()->has('error'))
                     <div class="alert alert-danger">
@@ -23,7 +23,13 @@
                         </div>
                         <div class="col-lg-12">
                             <label for="email">Email Address<span>*</span></label>
-                            <input type="text" id="email" name="email" value="{{old('email')}}">
+                            <input type="text" id="email" name="email" 
+                            @if(auth()->user())
+                            value="{{auth()->user()->email}}" readonly
+                            @else
+                            value="{{old('email')}}"
+                            @endif
+                            >
                             <p style="color: red">@error('email') {{$message}} @enderror</p>
                         </div>
                         <div class="col-lg-12">
@@ -72,7 +78,7 @@
                                 </select>
                             </div>
                             <div class="order-btn">
-                                <button type="submit" class="site-btn place-btn">Place Order</button>
+                                <button onclick="event.preventDefault(); submitForm();" class="site-btn place-btn" id="checkoutButton">Place Order</button>
                             </div>
                         </div>
                     </div>
@@ -83,4 +89,13 @@
 </section>
 <!-- Shopping Cart Section End -->
 
+@endsection
+@section('extra-js')
+<script type="text/javascript">
+    function submitForm(){
+        console.log(12345);
+        document.getElementById('checkoutButton').disabled = true;
+        document.getElementById('checkout').submit();
+    }
+</script>
 @endsection

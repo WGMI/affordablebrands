@@ -10,6 +10,6 @@ class TestController extends Controller
 {
     public function index(Request $request){
     	//return request()->is('test');
-    	return Route::getCurrentRoute()->uri;
+    	return view('emails.thankyou');//Route::getCurrentRoute()->uri;
     }
 }

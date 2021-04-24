@@ -21,29 +21,29 @@ Figure out Tax. Rate is currently set to 0. * (Reconsidered)
 Fix nav bar. Let active link reflect current page. *
 Only show products where available == 1 *
 Find ideal dimensions for images *
-Reset password functionality 
 Paginate search results *
-Validate that qty (in p.b.p and c.b.p) is btwn 1 & 5
 Reconsider active link code * (Reconsidered)
+Reset password functionality *
 Recheck multiple category logic
+Validate that qty (in p.b.p and c.b.p) is btwn 1 & 5
 
 Checkout
 
-Disable button after click (use JS)
-Validate details form
-Autofill email
-Thank you page
-Acknowlegment email
+Disable button after click (use JS) *
+Validate details form *
+Autofill email *
+Thank you page *
+Acknowlegment email *
 
 Cart
 
-Qty functionality
-Success msg when qty updated
+Qty functionality *
+Success msg when qty updated *
 
 Auth
 
-Login/Register redirect to previous page
+Login/Register redirect to previous page *
 
 ProductsController 
 
-Show categories in view mode
+Show categories in view mode *

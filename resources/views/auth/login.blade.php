@@ -61,7 +61,9 @@
                                 <a class="btn btn-link" href="{{route('register')}}">Register</a>
                                 <br><br>
                                 <u><a href="{{url('guestcheckout')}}">Shop as a guest (no signup)</a></u> |
-                                <u><a href="#">Forgot Password</a></u>
+                                <u><a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a></u>
 
                                 @if (Route::has('password.request'))
                                     <!--<a class="btn btn-link" href="{{ route('password.request') }}">

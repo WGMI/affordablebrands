@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \Gloudemans\Shoppingcart\facades\Cart;
+use Illuminate\Support\Facades\Mail;
 use App\Order;
 use App\OrderProduct;
 use App\Product;
+use App\Mail\OrderPlaced;
 
 class CheckoutController extends Controller
 {
@@ -64,7 +66,7 @@ class CheckoutController extends Controller
             'city'=>'required',
             'street'=>'required',
             'phone'=>'required'
-            ],
+        ],
             ['email.unique' => 'An account with this email exists. Please sign in if it is yours.']
         );
 
@@ -91,10 +93,13 @@ class CheckoutController extends Controller
             ]);
         }
 
+        Mail::to($order->email)->send(new OrderPlaced($order,$order->products()));
+
         //Decrease quntity of products in table
         $this->decreaseQuantities();
 
         Cart::instance('default')->destroy();
+        return view('thankyou');
         //dd($request);
     }
 

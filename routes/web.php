@@ -28,9 +28,19 @@ Route::post('/cart',[CartController::class,'store'])->name('cart.post');
 Route::post('/cartsingle',[CartController::class,'store']);
 Route::delete('/cart/{product}',[CartController::class,'destroy'])->name('cart.destroy');
 Route::post('/cartupdate/{product}',[CartController::class,'update']);
-Route::get('/checkout',[CheckoutController::class,'index'])->middleware('auth');
+Route::get('/checkout',[CheckoutController::class,'index'])->middleware(['auth','verified']);
 Route::post('/checkout',[CheckoutController::class,'store']);
 Route::get('/guestcheckout',[CheckoutController::class,'index']);
+Route::get('search',[ShopController::class,'search'])->name('search');;
+Route::get('forgot', function () {
+    return view('auth.passwords.reset');
+})->middleware('guest')->name('password.request');
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
+
+Auth::routes(['verify' => true]);
 
 Route::get('empty',function(){
 	Cart::destroy();
@@ -50,11 +60,5 @@ Route::get('forcelogout',function(Request $request){
 Route::get('test',[TestController::class,'index']);
 Route::get('test/{id}',[TestController::class,'index']);
 
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
 
-Auth::routes();
-
-Route::get('search',[ShopController::class,'search'])->name('search');;
 
