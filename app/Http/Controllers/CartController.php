@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
-use \Gloudemans\Shoppingcart\facades\Cart;
+//use \Gloudemans\Shoppingcart\facades\Cart;
+use Cart;
 
 class CartController extends Controller
 {
