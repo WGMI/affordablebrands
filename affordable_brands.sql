@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2021 at 02:53 PM
+-- Generation Time: Apr 27, 2021 at 02:48 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -234,7 +234,13 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (92, 11, 'phone', 'text', 'Phone', 1, 1, 1, 1, 1, 1, '{}', 8),
 (93, 11, 'payment', 'text', 'Payment', 1, 1, 1, 1, 1, 1, '{}', 9),
 (94, 11, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 10),
-(95, 11, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 11);
+(95, 11, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 11),
+(96, 16, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(97, 16, 'category_id', 'hidden', 'Category Id', 1, 0, 0, 1, 1, 1, '{}', 2),
+(98, 16, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, '{}', 3),
+(99, 16, 'slug', 'text', 'Slug', 1, 1, 1, 1, 1, 1, '{}', 4),
+(100, 16, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '{}', 5),
+(101, 16, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6);
 
 -- --------------------------------------------------------
 
@@ -274,7 +280,8 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (8, 'products', 'products', 'Product', 'Products', 'voyager-bag', 'App\\Product', NULL, '\\App\\Http\\Controllers\\Voyager\\ProductsController', NULL, 1, 1, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-02-19 04:40:35', '2021-04-24 09:51:11'),
 (9, 'category', 'category', 'Category', 'Categories', 'voyager-categories', 'App\\Category', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-02-19 05:21:30', '2021-02-19 05:21:30'),
 (10, 'category_product', 'category-product', 'Category Product', 'Category Products', 'voyager-tag', 'App\\CategoryProduct', NULL, NULL, NULL, 1, 1, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-02-19 05:28:28', '2021-02-19 05:29:08'),
-(11, 'orders', 'orders', 'Order', 'Orders', 'voyager-buy', 'App\\Order', NULL, '\\App\\Http\\Controllers\\Voyager\\OrdersController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-03-02 05:40:25', '2021-03-02 05:47:38');
+(11, 'orders', 'orders', 'Order', 'Orders', 'voyager-buy', 'App\\Order', NULL, '\\App\\Http\\Controllers\\Voyager\\OrdersController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-03-02 05:40:25', '2021-03-02 05:47:38'),
+(16, 'sub_categories', 'sub-categories', 'Sub Category', 'Sub Categories', 'voyager-double-right', 'App\\SubCategory', NULL, '\\App\\Http\\Controllers\\Voyager\\SubCategoriesController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-04-27 03:59:45', '2021-04-27 05:33:56');
 
 -- --------------------------------------------------------
 
@@ -340,23 +347,24 @@ CREATE TABLE `menu_items` (
 
 INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class`, `color`, `parent_id`, `order`, `created_at`, `updated_at`, `route`, `parameters`) VALUES
 (1, 1, 'Dashboard', '', '_self', 'voyager-boat', NULL, NULL, 1, '2021-02-18 05:46:50', '2021-02-18 05:46:50', 'voyager.dashboard', NULL),
-(2, 1, 'Media', '', '_self', 'voyager-images', NULL, NULL, 8, '2021-02-18 05:46:51', '2021-03-02 05:44:52', 'voyager.media.index', NULL),
-(3, 1, 'Users', '', '_self', 'voyager-person', NULL, NULL, 7, '2021-02-18 05:46:51', '2021-03-02 05:44:52', 'voyager.users.index', NULL),
-(4, 1, 'Roles', '', '_self', 'voyager-lock', NULL, NULL, 6, '2021-02-18 05:46:51', '2021-03-02 05:44:54', 'voyager.roles.index', NULL),
-(5, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 12, '2021-02-18 05:46:52', '2021-03-02 05:44:48', NULL, NULL),
+(2, 1, 'Media', '', '_self', 'voyager-images', NULL, NULL, 9, '2021-02-18 05:46:51', '2021-04-27 04:00:41', 'voyager.media.index', NULL),
+(3, 1, 'Users', '', '_self', 'voyager-person', NULL, NULL, 8, '2021-02-18 05:46:51', '2021-04-27 04:00:41', 'voyager.users.index', NULL),
+(4, 1, 'Roles', '', '_self', 'voyager-lock', NULL, NULL, 7, '2021-02-18 05:46:51', '2021-04-27 04:00:41', 'voyager.roles.index', NULL),
+(5, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 13, '2021-02-18 05:46:52', '2021-04-27 04:00:37', NULL, NULL),
 (6, 1, 'Menu Builder', '', '_self', 'voyager-list', NULL, 5, 1, '2021-02-18 05:46:52', '2021-02-19 05:15:40', 'voyager.menus.index', NULL),
 (7, 1, 'Database', '', '_self', 'voyager-data', NULL, 5, 2, '2021-02-18 05:46:52', '2021-02-19 05:15:40', 'voyager.database.index', NULL),
 (8, 1, 'Compass', '', '_self', 'voyager-compass', NULL, 5, 3, '2021-02-18 05:46:52', '2021-02-19 05:15:40', 'voyager.compass.index', NULL),
 (9, 1, 'BREAD', '', '_self', 'voyager-bread', NULL, 5, 4, '2021-02-18 05:46:52', '2021-02-19 05:15:40', 'voyager.bread.index', NULL),
-(10, 1, 'Settings', '', '_self', 'voyager-settings', NULL, NULL, 13, '2021-02-18 05:46:52', '2021-03-02 05:44:48', 'voyager.settings.index', NULL),
-(11, 1, 'Categories', '', '_self', 'voyager-categories', NULL, NULL, 11, '2021-02-18 05:47:28', '2021-03-02 05:44:47', 'voyager.categories.index', NULL),
-(12, 1, 'Posts', '', '_self', 'voyager-news', NULL, NULL, 9, '2021-02-18 05:47:33', '2021-03-02 05:44:52', 'voyager.posts.index', NULL),
-(13, 1, 'Pages', '', '_self', 'voyager-file-text', NULL, NULL, 10, '2021-02-18 05:47:36', '2021-03-02 05:44:47', 'voyager.pages.index', NULL),
+(10, 1, 'Settings', '', '_self', 'voyager-settings', NULL, NULL, 14, '2021-02-18 05:46:52', '2021-04-27 04:00:37', 'voyager.settings.index', NULL),
+(11, 1, 'Categories', '', '_self', 'voyager-categories', NULL, NULL, 12, '2021-02-18 05:47:28', '2021-04-27 04:00:37', 'voyager.categories.index', NULL),
+(12, 1, 'Posts', '', '_self', 'voyager-news', NULL, NULL, 10, '2021-02-18 05:47:33', '2021-04-27 04:00:42', 'voyager.posts.index', NULL),
+(13, 1, 'Pages', '', '_self', 'voyager-file-text', NULL, NULL, 11, '2021-02-18 05:47:36', '2021-04-27 04:00:37', 'voyager.pages.index', NULL),
 (14, 1, 'Hooks', '', '_self', 'voyager-hook', NULL, 5, 5, '2021-02-18 05:47:42', '2021-02-19 05:15:40', 'voyager.hooks', NULL),
 (15, 1, 'Products', '', '_self', 'voyager-bag', NULL, NULL, 2, '2021-02-19 04:40:37', '2021-02-19 05:15:49', 'voyager.products.index', NULL),
 (16, 1, 'Categories', '', '_self', 'voyager-categories', NULL, NULL, 3, '2021-02-19 05:21:31', '2021-02-19 05:22:03', 'voyager.category.index', NULL),
-(17, 1, 'Category Products', '', '_self', 'voyager-tag', NULL, NULL, 4, '2021-02-19 05:28:29', '2021-02-19 05:28:41', 'voyager.category-product.index', NULL),
-(18, 1, 'Orders', '', '_self', 'voyager-buy', '#000000', NULL, 5, '2021-03-02 05:40:26', '2021-03-02 05:46:22', 'voyager.orders.index', 'null');
+(17, 1, 'Category Products', '', '_self', 'voyager-tag', NULL, NULL, 5, '2021-02-19 05:28:29', '2021-04-27 04:00:41', 'voyager.category-product.index', NULL),
+(18, 1, 'Orders', '', '_self', 'voyager-buy', '#000000', NULL, 6, '2021-03-02 05:40:26', '2021-04-27 04:00:41', 'voyager.orders.index', 'null'),
+(19, 1, 'Sub Categories', '', '_self', 'voyager-double-right', NULL, NULL, 4, '2021-04-27 03:59:45', '2021-04-27 04:00:41', 'voyager.sub-categories.index', NULL);
 
 -- --------------------------------------------------------
 
@@ -408,7 +416,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (32, '2021_03_01_080838_create_orders_table', 5),
 (33, '2021_03_01_104221_create_order_product_table', 6),
 (34, '2021_04_24_123351_change_product_desc_and_info', 7),
-(35, '2021_04_24_124802_change_product_add_info', 8);
+(35, '2021_04_24_124802_change_product_add_info', 8),
+(36, '2021_04_27_061502_create_sub_categories_table', 9);
 
 -- --------------------------------------------------------
 
@@ -639,7 +648,12 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (58, 'read_orders', 'orders', '2021-03-02 05:40:25', '2021-03-02 05:40:25'),
 (59, 'edit_orders', 'orders', '2021-03-02 05:40:25', '2021-03-02 05:40:25'),
 (60, 'add_orders', 'orders', '2021-03-02 05:40:25', '2021-03-02 05:40:25'),
-(61, 'delete_orders', 'orders', '2021-03-02 05:40:25', '2021-03-02 05:40:25');
+(61, 'delete_orders', 'orders', '2021-03-02 05:40:25', '2021-03-02 05:40:25'),
+(62, 'browse_sub_categories', 'sub_categories', '2021-04-27 03:59:45', '2021-04-27 03:59:45'),
+(63, 'read_sub_categories', 'sub_categories', '2021-04-27 03:59:45', '2021-04-27 03:59:45'),
+(64, 'edit_sub_categories', 'sub_categories', '2021-04-27 03:59:45', '2021-04-27 03:59:45'),
+(65, 'add_sub_categories', 'sub_categories', '2021-04-27 03:59:45', '2021-04-27 03:59:45'),
+(66, 'delete_sub_categories', 'sub_categories', '2021-04-27 03:59:45', '2021-04-27 03:59:45');
 
 -- --------------------------------------------------------
 
@@ -716,7 +730,12 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (58, 1),
 (59, 1),
 (60, 1),
-(61, 1);
+(61, 1),
+(62, 1),
+(63, 1),
+(64, 1),
+(65, 1),
+(66, 1);
 
 -- --------------------------------------------------------
 
@@ -859,6 +878,29 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 (9, 'admin.icon_image', 'Admin Icon Image', '', '', 'image', 4, 'Admin'),
 (10, 'admin.google_analytics_client_id', 'Google Analytics Client ID (used for admin dashboard)', NULL, '', 'text', 1, 'Admin'),
 (11, 'site.quantity_threshold', 'Quantity Threshold', '5', NULL, 'text', 6, 'Site');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sub_categories`
+--
+
+CREATE TABLE `sub_categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sub_categories`
+--
+
+INSERT INTO `sub_categories` (`id`, `category_id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 2, 'q', 'w', '2021-04-27 04:33:13', '2021-04-27 04:34:16'),
+(2, 1, 'test', 'testslug', '2021-04-27 05:06:22', '2021-04-27 05:06:22');
 
 -- --------------------------------------------------------
 
@@ -1097,6 +1139,15 @@ ALTER TABLE `settings`
   ADD UNIQUE KEY `settings_key_unique` (`key`);
 
 --
+-- Indexes for table `sub_categories`
+--
+ALTER TABLE `sub_categories`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `sub_categories_name_unique` (`name`),
+  ADD UNIQUE KEY `sub_categories_slug_unique` (`slug`),
+  ADD KEY `sub_categories_category_id_foreign` (`category_id`);
+
+--
 -- Indexes for table `translations`
 --
 ALTER TABLE `translations`
@@ -1145,13 +1196,13 @@ ALTER TABLE `category_product`
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1169,13 +1220,13 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -1199,7 +1250,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -1224,6 +1275,12 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `settings`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `sub_categories`
+--
+ALTER TABLE `sub_categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `translations`
@@ -1285,6 +1342,12 @@ ALTER TABLE `order_product`
 ALTER TABLE `permission_role`
   ADD CONSTRAINT `permission_role_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `permission_role_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `sub_categories`
+--
+ALTER TABLE `sub_categories`
+  ADD CONSTRAINT `sub_categories_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
 
 --
 -- Constraints for table `users`
