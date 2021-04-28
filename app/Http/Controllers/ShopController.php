@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
+use App\SubCategory;
 use Illuminate\Support\Facades\DB;
 
 class ShopController extends Controller
@@ -18,11 +19,19 @@ class ShopController extends Controller
     {
         $pagination = 9;
         $categoryName = null;
+        $subcategories = null;
+        $subcategoryName = null;
         if(request()->category){
             $products = Product::with('categories')->whereHas('categories',function($query){
                 $query->where('name',request()->category);
             });
             $categoryName = optional(Category::where('slug',request()->category)->first())->name;
+            $subcategories = Category::where('slug',request()->category)->first()->subcategories;
+        } else if(request()->subcategory){
+            $products = Product::with('subcategories')->whereHas('subcategories',function($query){
+                $query->where('name',request()->subcategory);
+            });
+            $subcategoryName = optional(SubCategory::where('slug',request()->subcategory)->first())->name;
         } else{
             $products = Product::take(10);
         }
@@ -35,7 +44,7 @@ class ShopController extends Controller
             $products = $products->paginate($pagination);
         }
 
-        return view('shop')->with(['products' => $products,'categoryName' => $categoryName]);
+        return view('shop')->with(['products' => $products,'categoryName' => $categoryName,'subcategoryName' => $subcategoryName,'subcategories' => $subcategories]);
     }
 
     /**
@@ -73,5 +82,26 @@ class ShopController extends Controller
         ->take(10)->paginate(9);
         //dd($products);
         return view('search-results')->with('products',$products);
+    }
+
+    public function getsubcategories(Request $request){
+        $subcategories = "<ul id=\"product_catchecklist\" data-wp-lists=\"list:product_cat\" class=\"categorychecklist form-no-clear\">";
+
+        foreach($request->choices as $choice){
+            $c = Category::find((int)$choice);//->subcategories;
+            //dd($c->subcategories);
+            $subcats = $c->subcategories;
+            foreach ($subcats as $sc) {
+                $subcategories .= "
+                <li>
+                    <label><input value=\"$sc->id\" type=\"checkbox\" name=\"subcategory[]\"> $sc->name</label>
+                </li>
+                ";
+            }
+        }
+
+        $subcategories .= "</ul>";
+
+        return $subcategories;
     }
 }

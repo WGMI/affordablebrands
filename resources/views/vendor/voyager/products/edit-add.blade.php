@@ -92,14 +92,20 @@
 
 							<div class="form-group col-md-12">
 								<label>Categories</label>
+                                <input type="hidden" name="url" id="urldata" value="{{url('subcategories')}}" >
 								<ul id="product_catchecklist" data-wp-lists="list:product_cat" class="categorychecklist form-no-clear">
 									@foreach($categories as $c)
 										<li>
-											<label><input value="{{$c->id}}" type="checkbox" name="category[]" {{$productCategories->contains($c) ? 'checked' : ''}}> {{$c->name}}</label>
+											<label><input value="{{$c->id}}" type="checkbox" name="category[]" {{$productCategories->contains($c) ? 'checked' : ''}} onclick="updatesubcategories(this)"> {{$c->name}}</label>
 										</li>
 									@endforeach
 								</ul>                                    
 							</div>
+
+                            <div class="form-group col-md-12">
+                                <label>Sub Categories</label>
+                                <div id="subcategoriesarea"></div>                                     
+                            </div>
 
                         </div><!-- panel-body -->
 
@@ -153,6 +159,18 @@
     <script>
         var params = {};
         var $file;
+        var url = document.getElementById('urldata').value;
+        var categoryChoices = [];
+
+        function updatesubcategories(checkbox){
+            if(checkbox.checked){
+                categoryChoices.push(checkbox.value);
+            } else{
+                categoryChoices.pop(checkbox.value);
+            }
+            console.log(categoryChoices);
+            $('#subcategoriesarea').load(url, { "choices[]": categoryChoices } );
+        }
 
         function deleteHandler(tag, isMulti) {
           return function() {

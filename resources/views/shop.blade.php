@@ -7,10 +7,17 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
                 <div class="filter-widget">
-                    <h4 class="fw-title">Categories</h4>
-                    <ul class="filter-catagories">
-                        @include('includes.partials.categories')
-                    </ul>
+                    @if(!isset($categoryName))
+                        <h4 class="fw-title">Categories</h4>
+                        <ul class="filter-catagories">
+                            @include('includes.partials.categories')
+                        </ul>
+                    @else
+                        <h4 class="fw-title">{{$categoryName}}</h4>
+                        <ul class="filter-catagories">
+                            @include('includes.partials.subcategories')
+                        </ul>
+                    @endif
                 </div>
             </div>
             <div class="col-lg-9 order-1 order-lg-2">

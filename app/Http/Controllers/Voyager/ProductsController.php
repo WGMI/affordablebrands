@@ -18,6 +18,8 @@ use TCG\Voyager\Http\Controllers\Traits\BreadRelationshipParser;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 use App\Category;
 use App\CategoryProduct;
+use App\SubCategory;
+use App\SubCategoryProduct;
 use App\Product;
 
 class ProductsController extends VoyagerBaseController
@@ -216,6 +218,8 @@ class ProductsController extends VoyagerBaseController
 
         $categories = Category::all();
         $productCategories = collect([]);
+        $subcategories = Category::all();
+        $productSubCategories = collect([]);
 
         return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable','categories','productCategories'));
     }

@@ -31,7 +31,9 @@ Route::post('/cartupdate/{product}',[CartController::class,'update']);
 Route::get('/checkout',[CheckoutController::class,'index'])->middleware(['auth','verified']);
 Route::post('/checkout',[CheckoutController::class,'store']);
 Route::get('/guestcheckout',[CheckoutController::class,'index']);
-Route::get('search',[ShopController::class,'search'])->name('search');;
+Route::get('search',[ShopController::class,'search'])->name('search');
+Route::post('subcategories',[ShopController::class,'getsubcategories'])->middleware('admin.user');
+
 Route::get('forgot', function () {
     return view('auth.passwords.reset');
 })->middleware('guest')->name('password.request');
