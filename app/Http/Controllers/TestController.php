@@ -13,7 +13,7 @@ class TestController extends Controller
     public function index(){
     	$subcategories = "<ul id=\"product_catchecklist\" data-wp-lists=\"list:product_cat\" class=\"categorychecklist form-no-clear\">";
 
-        foreach(["1","2","3","4","6"] as $choice){
+        foreach(["1"] as $choice){
             $c = Category::find((int)$choice);//->subcategories;
             //dd($c->subcategories);
             $subcats = $c->subcategories;

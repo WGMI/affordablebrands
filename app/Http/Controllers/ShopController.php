@@ -85,16 +85,23 @@ class ShopController extends Controller
     }
 
     public function getsubcategories(Request $request){
+        //dd($request->choices);
         $subcategories = "<ul id=\"product_catchecklist\" data-wp-lists=\"list:product_cat\" class=\"categorychecklist form-no-clear\">";
+
+        if($request->choices == null){
+            return '';
+        }
 
         foreach($request->choices as $choice){
             $c = Category::find((int)$choice);//->subcategories;
             //dd($c->subcategories);
             $subcats = $c->subcategories;
+            $subcatchoices = ($request->subcategorychoices) ? $request->subcategorychoices : array();
             foreach ($subcats as $sc) {
+                $checked = (in_array($sc->id,$subcatchoices)) ? 'checked':'';
                 $subcategories .= "
                 <li>
-                    <label><input value=\"$sc->id\" type=\"checkbox\" name=\"subcategory[]\"> $sc->name</label>
+                    <label><input value=\"$sc->id\" type=\"checkbox\" name=\"subcategory[]\" $checked> $sc->name</label>
                 </li>
                 ";
             }

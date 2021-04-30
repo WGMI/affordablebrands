@@ -128,8 +128,9 @@ class ProductsController extends VoyagerBaseController
         $categories = Category::all();
         $product = Product::find($id);
         $productCategories = $product->categories()->get();
+        $productSubCategories = $product->subcategories()->get();
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable','categories','productCategories'));
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable','categories','productCategories','productSubCategories'));
     }
 
     // POST BR(E)AD
@@ -168,6 +169,17 @@ class ProductsController extends VoyagerBaseController
                 CategoryProduct::create([
                     'product_id' => $id,
                     'category_id' => $c
+                ]);
+            }
+        }
+
+        SubCategoryProduct::where('product_id',$id)->delete();
+
+        if($request->subcategory){
+            foreach ($request->subcategory as $sc) {
+                SubCategoryProduct::create([
+                    'product_id' => $id,
+                    'sub_category_id' => $sc
                 ]);
             }
         }
@@ -221,7 +233,7 @@ class ProductsController extends VoyagerBaseController
         $subcategories = Category::all();
         $productSubCategories = collect([]);
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable','categories','productCategories'));
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable','categories','productCategories','productSubCategories'));
     }
 
     /**
@@ -251,6 +263,15 @@ class ProductsController extends VoyagerBaseController
                 CategoryProduct::create([
                     'product_id' => $data->id,
                     'category_id' => $c
+                ]);
+            }
+        }
+
+        if($request->subcategory){
+            foreach ($request->subcategory as $sc) {
+                SubCategoryProduct::create([
+                    'product_id' => $data->id,
+                    'sub_category_id' => $sc
                 ]);
             }
         }

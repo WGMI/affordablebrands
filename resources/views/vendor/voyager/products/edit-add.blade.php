@@ -96,15 +96,29 @@
 								<ul id="product_catchecklist" data-wp-lists="list:product_cat" class="categorychecklist form-no-clear">
 									@foreach($categories as $c)
 										<li>
-											<label><input value="{{$c->id}}" type="checkbox" name="category[]" {{$productCategories->contains($c) ? 'checked' : ''}} onclick="updatesubcategories(this)"> {{$c->name}}</label>
+											<label><input class="categorycheckbox" value="{{$c->id}}" type="checkbox" name="category[]" {{$productCategories->contains($c) ? 'checked' : ''}} onclick="updatesubcategories(this,false)"> {{$c->name}}</label>
 										</li>
 									@endforeach
 								</ul>                                    
 							</div>
 
+                            @if(count($productSubCategories))
+                                <div class="form-group col-md-12">
+                                    <label>Current Sub Categories</label>
+                                    <p>Select a category to view and select sub categories</p>
+                                    <ul id="product_catchecklist" data-wp-lists="list:product_cat" class="categorychecklist form-no-clear">
+                                        @foreach($productSubCategories as $psc)
+                                            <li>
+                                                <label><p class="currentsubcats" id="{{$psc->id}}">{{$psc->name}}</p></label>
+                                            </li>
+                                        @endforeach
+                                    </ul>                                  
+                                </div>
+                            @endif
+
                             <div class="form-group col-md-12">
                                 <label>Sub Categories</label>
-                                <div id="subcategoriesarea"></div>                                     
+                                <div id="subcategoriesarea"></div>                                 
                             </div>
 
                         </div><!-- panel-body -->
@@ -161,15 +175,36 @@
         var $file;
         var url = document.getElementById('urldata').value;
         var categoryChoices = [];
+        var subcatsArray = [];
 
-        function updatesubcategories(checkbox){
+        window.onload = function(){
+            var catCheckboxes = document.getElementsByClassName('categorycheckbox');
+            var subcats = document.getElementsByClassName('currentsubcats');
+            
+            for (var i = 0; i < subcats.length; i++) {
+                subcatsArray.push(subcats.item(i).id);
+                
+            }
+
+            for (var i = 0; i < catCheckboxes.length; i++) {
+                if(catCheckboxes.item(i).checked){
+                    updatesubcategories(catCheckboxes.item(i),true);
+                }
+            }
+        }
+
+        function updatesubcategories(checkbox,withsubcats){
             if(checkbox.checked){
                 categoryChoices.push(checkbox.value);
             } else{
                 categoryChoices.pop(checkbox.value);
             }
-            console.log(categoryChoices);
-            $('#subcategoriesarea').load(url, { "choices[]": categoryChoices } );
+            
+            if(withsubcats){
+                $('#subcategoriesarea').load(url, { "choices[]": categoryChoices , "subcategorychoices[]": subcatsArray } );
+            } else{
+                $('#subcategoriesarea').load(url, { "choices[]": categoryChoices });
+            }
         }
 
         function deleteHandler(tag, isMulti) {
