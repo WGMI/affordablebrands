@@ -33,6 +33,7 @@ Route::post('/checkout',[CheckoutController::class,'store']);
 Route::get('/guestcheckout',[CheckoutController::class,'index']);
 Route::get('search',[ShopController::class,'search'])->name('search');
 Route::post('subcategories',[ShopController::class,'getsubcategories'])->middleware('admin.user');
+Route::get('switchuser',[HomeController::class,'switchuser'])->name('switchuser');
 
 Route::get('forgot', function () {
     return view('auth.passwords.reset');

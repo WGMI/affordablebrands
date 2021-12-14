@@ -33,7 +33,7 @@
                     <div class="col-lg-2 col-md-2">
                         <div class="logo">
                             <a href="{{url('/')}}">
-                                <h4>Affordable Brands</h4>
+                                <h4>Qikapu</h4>
                             </a>
                         </div>
                     </div>
@@ -59,6 +59,8 @@
                                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                                         @if(auth()->user()->role_id == 1)
                                             <a class="dropdown-item" href="{{ url('admin') }}">Admin</a>
+                                        @else
+                                        <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal">Change User Type</a>
                                         @endif
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                             @csrf
@@ -109,6 +111,31 @@
                             </li>
                         </ul>
                     </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Change User Type</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    @auth
+                                        <p>You are currently logged in as a {{auth()->user()->role->name}}</p>
+                                    @endauth
+                                </div>
+                                @auth
+                                    <div class="modal-footer">
+                                        <a type="button" class="btn btn-primary" href="{{ route('switchuser', ['id' => auth()->user()->id]) }}" style="color:white;">Switch to {{auth()->user()->role->name == 'Regular User' ? 'Wholesaler' : 'Regular User'}}</a>
+                                    </div>
+                                @endauth
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
