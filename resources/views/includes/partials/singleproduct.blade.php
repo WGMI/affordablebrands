@@ -37,14 +37,22 @@
     </div>
     <div class="pi-text">
         <!-- <div class="catagory-name">Electronics</div> -->
-        <a href="{{route('shop.show',$p->slug)}}">
-            <h5>{{$p->name}}</h5>
-            @if(auth()->user()->role_id == 3)
-            <p>Batch of {{$p->wholesaler_quantity}}</p>
-            @endif
-        </a>
-        <div class="product-price">
-            {{auth()->user()->role_id == 2 ? presentPrice($p->price) : presentPrice($p->wholesaler_price)}}
-        </div>
+        @auth
+            <a href="{{route('shop.show',$p->slug)}}">
+                <h5>{{$p->name}}</h5>
+                @if(auth()->user()->role_id == 3)
+                <p>Batch of {{$p->wholesaler_quantity}}</p>
+                @endif
+            </a>
+        @endauth
+        @auth
+            <div class="product-price">
+                {{auth()->user()->role_id == 2 ? presentPrice($p->price) : presentPrice($p->wholesaler_price)}}
+            </div>
+        @else
+            <div class="product-price">
+                {{presentPrice($p->price)}}
+            </div>
+        @endauth
     </div>
 </div>
