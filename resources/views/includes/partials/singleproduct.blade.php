@@ -41,13 +41,13 @@
             <a href="{{route('shop.show',$p->slug)}}">
                 <h5>{{$p->name}}</h5>
                 @if(auth()->user()->role_id == 3)
-                <p>Batch of {{$p->wholesaler_quantity}}</p>
+                <p>Batch of {{$p->units_per_case}}</p>
                 @endif
             </a>
         @endauth
         @auth
             <div class="product-price">
-                {{auth()->user()->role_id == 2 ? presentPrice($p->price) : presentPrice($p->wholesaler_price)}}
+                {{auth()->user()->role_id == 2 ? presentPrice($p->price) : presentPrice($p->list_price_per_case)}}
             </div>
         @else
             <div class="product-price">
