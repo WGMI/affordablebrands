@@ -1,17 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2021 at 02:48 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- Generation Time: Dec 21, 2021 at 10:14 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-/**/
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -20,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `affordable_brands`
+-- Database: `qikapu`
 --
 
 -- --------------------------------------------------------
@@ -66,11 +64,9 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'Electronics', 'electronics', NULL, NULL),
-(2, 'Kitchenware', 'kitchenware', NULL, NULL),
-(3, 'Appliances', 'appliances', NULL, NULL),
-(4, 'Accessories', 'accessories', '2021-02-19 05:22:45', '2021-02-19 05:22:45'),
-(6, 'Additions', 'additions', '2021-03-27 09:40:24', '2021-03-27 09:40:24');
+(1, 'Juice', 'juice', NULL, NULL),
+(2, 'Spices', 'spices', NULL, NULL),
+(3, 'Cooking Fat', 'fats', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -91,29 +87,8 @@ CREATE TABLE `category_product` (
 --
 
 INSERT INTO `category_product` (`id`, `product_id`, `category_id`, `created_at`, `updated_at`) VALUES
-(2, 2, 1, NULL, NULL),
-(3, 3, 1, NULL, NULL),
-(4, 4, 1, NULL, NULL),
-(5, 5, 1, NULL, NULL),
-(6, 6, 3, NULL, NULL),
-(9, 2, 1, NULL, NULL),
-(10, 3, 1, NULL, NULL),
-(11, 4, 1, NULL, NULL),
-(12, 5, 1, NULL, NULL),
-(13, 6, 3, NULL, NULL),
-(15, 1, 1, '2021-02-24 04:29:52', '2021-02-24 04:29:52'),
-(21, 21, 1, '2021-02-24 07:08:41', '2021-02-24 07:08:41'),
-(22, 21, 3, '2021-02-24 07:08:41', '2021-02-24 07:08:41'),
-(23, 21, 4, '2021-02-24 07:08:41', '2021-02-24 07:08:41'),
-(30, 15, 1, '2021-03-13 06:38:19', '2021-03-13 06:38:19'),
-(31, 15, 3, '2021-03-13 06:38:20', '2021-03-13 06:38:20'),
-(38, 28, 1, '2021-03-27 09:41:44', '2021-03-27 09:41:44'),
-(39, 28, 4, '2021-03-27 09:41:45', '2021-03-27 09:41:45'),
-(41, 28, 6, '2021-03-27 09:41:45', '2021-03-27 09:41:45'),
-(42, 29, 1, '2021-04-22 05:53:23', '2021-04-22 05:53:23'),
-(43, 30, 1, '2021-04-24 09:42:03', '2021-04-24 09:42:03'),
-(44, 30, 2, '2021-04-24 09:42:03', '2021-04-24 09:42:03'),
-(45, 31, 4, '2021-04-24 09:52:13', '2021-04-24 09:52:13');
+(47, 32, 2, '2021-11-16 02:15:25', '2021-11-16 02:15:25'),
+(49, 37, 2, '2021-11-22 03:09:33', '2021-11-22 03:09:33');
 
 -- --------------------------------------------------------
 
@@ -205,14 +180,14 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (61, 8, 'available', 'checkbox', 'Available', 1, 1, 1, 1, 1, 1, '{\"on\":\"Yes\",\"off\":\"No\"}', 6),
 (62, 8, 'slug', 'text', 'Slug', 1, 1, 1, 1, 1, 1, '{}', 7),
 (63, 8, 'featured', 'checkbox', 'Featured', 1, 1, 1, 1, 1, 1, '{\"on\":\"Yes\",\"off\":\"No\"}', 8),
-(64, 8, 'model', 'text', 'Model', 1, 1, 1, 1, 1, 1, '{\"default\":\"NA\"}', 9),
-(65, 8, 'colour', 'text', 'Colour', 1, 1, 1, 1, 1, 1, '{\"default\":\"NA\"}', 10),
+(64, 8, 'model', 'text', 'Model', 1, 0, 1, 1, 1, 1, '{\"default\":\"NA\"}', 9),
+(65, 8, 'colour', 'text', 'Colour', 1, 0, 1, 1, 1, 1, '{\"default\":\"NA\"}', 10),
 (66, 8, 'brand', 'text', 'Brand', 1, 1, 1, 1, 1, 1, '{\"default\":\"NA\"}', 11),
 (67, 8, 'tax', 'number', 'Tax', 1, 1, 1, 1, 1, 1, '{\"default\":0}', 12),
-(68, 8, 'information', 'rich_text_box', 'Information', 1, 1, 1, 1, 1, 1, '{}', 13),
-(69, 8, 'additional_information', 'text_area', 'Additional Information', 1, 1, 1, 1, 1, 1, '{\"default\":\"NA\"}', 14),
+(68, 8, 'information', 'rich_text_box', 'Information', 1, 0, 1, 1, 1, 1, '{}', 13),
+(69, 8, 'additional_information', 'text_area', 'Additional Information', 1, 0, 1, 1, 1, 1, '{\"default\":\"NA\"}', 14),
 (70, 8, 'quantity', 'number', 'Quantity', 1, 1, 1, 1, 1, 1, '{}', 15),
-(71, 8, 'sku', 'text', 'Sku', 1, 1, 1, 1, 1, 1, '{}', 16),
+(71, 8, 'sku', 'text', 'Sku', 1, 0, 1, 1, 1, 1, '{}', 16),
 (72, 8, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 17),
 (73, 8, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 18),
 (74, 9, 'id', 'hidden', 'Id', 1, 1, 1, 1, 1, 0, '{}', 1),
@@ -225,7 +200,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (81, 10, 'category_id', 'number', 'Category Id', 0, 1, 1, 1, 1, 1, '{}', 3),
 (82, 10, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 4),
 (83, 10, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
-(84, 8, 'images', 'multiple_images', 'Images', 0, 1, 1, 1, 1, 1, '{}', 6),
+(84, 8, 'images', 'multiple_images', 'Images', 0, 0, 1, 1, 1, 1, '{}', 6),
 (85, 11, 'id', 'text', 'Id', 1, 1, 1, 1, 1, 0, '{}', 1),
 (86, 11, 'user_id', 'text', 'User Id', 0, 1, 1, 1, 1, 1, '{}', 2),
 (87, 11, 'email', 'text', 'Email', 1, 1, 1, 1, 1, 1, '{}', 3),
@@ -242,7 +217,13 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (98, 16, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, '{}', 3),
 (99, 16, 'slug', 'text', 'Slug', 1, 1, 1, 1, 1, 1, '{}', 4),
 (100, 16, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '{}', 5),
-(101, 16, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6);
+(101, 16, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
+(102, 8, 'wholesaler_quantity', 'text', 'Wholesaler Quantity', 0, 1, 1, 1, 1, 1, '{}', 20),
+(103, 8, 'wholesaler_price', 'text', 'Wholesaler Price', 0, 1, 1, 1, 1, 1, '{}', 21),
+(104, 8, 'packsize', 'text', 'Packsize', 0, 0, 1, 1, 1, 1, '{}', 4),
+(105, 8, 'ex_factory_price', 'text', 'Ex Factory Price', 0, 1, 1, 1, 1, 1, '{}', 19),
+(106, 8, 'list_price_per_case', 'text', 'List Price Per Case', 0, 1, 1, 1, 1, 1, '{}', 20),
+(107, 8, 'units_per_case', 'text', 'Units Per Case', 0, 1, 1, 1, 1, 1, '{}', 21);
 
 -- --------------------------------------------------------
 
@@ -279,7 +260,7 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (4, 'categories', 'categories', 'Category', 'Categories', 'voyager-categories', 'TCG\\Voyager\\Models\\Category', NULL, '', '', 1, 0, NULL, '2021-02-18 05:47:25', '2021-02-18 05:47:25'),
 (5, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', '', '', 1, 0, NULL, '2021-02-18 05:47:30', '2021-02-18 05:47:30'),
 (6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2021-02-18 05:47:34', '2021-02-18 05:47:34'),
-(8, 'products', 'products', 'Product', 'Products', 'voyager-bag', 'App\\Product', NULL, '\\App\\Http\\Controllers\\Voyager\\ProductsController', NULL, 1, 1, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-02-19 04:40:35', '2021-04-24 09:51:11'),
+(8, 'products', 'products', 'Product', 'Products', 'voyager-bag', 'App\\Product', NULL, '\\App\\Http\\Controllers\\Voyager\\ProductsController', NULL, 1, 1, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-02-19 04:40:35', '2021-12-21 02:24:16'),
 (9, 'category', 'category', 'Category', 'Categories', 'voyager-categories', 'App\\Category', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-02-19 05:21:30', '2021-02-19 05:21:30'),
 (10, 'category_product', 'category-product', 'Category Product', 'Category Products', 'voyager-tag', 'App\\CategoryProduct', NULL, NULL, NULL, 1, 1, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-02-19 05:28:28', '2021-02-19 05:29:08'),
 (11, 'orders', 'orders', 'Order', 'Orders', 'voyager-buy', 'App\\Order', NULL, '\\App\\Http\\Controllers\\Voyager\\OrdersController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-03-02 05:40:25', '2021-03-02 05:47:38'),
@@ -419,7 +400,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (33, '2021_03_01_104221_create_order_product_table', 6),
 (34, '2021_04_24_123351_change_product_desc_and_info', 7),
 (35, '2021_04_24_124802_change_product_add_info', 8),
-(36, '2021_04_27_061502_create_sub_categories_table', 9);
+(36, '2021_04_27_061502_create_sub_categories_table', 9),
+(37, '2021_04_27_084532_create_sub_category_products_table', 10),
+(38, '2021_11_22_055705_add_quantity_to_show_to_products', 11),
+(39, '2021_12_21_051826_alter_products', 12);
 
 -- --------------------------------------------------------
 
@@ -497,39 +481,39 @@ CREATE TABLE `order_product` (
 --
 
 INSERT INTO `order_product` (`id`, `order_id`, `product_id`, `quantity`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, 1, '2021-03-01 08:13:11', '2021-03-01 08:13:11'),
-(2, 2, 2, 1, '2021-03-02 06:05:04', '2021-03-02 06:05:04'),
-(3, 3, 1, 1, '2021-03-02 06:08:31', '2021-03-02 06:08:31'),
-(4, 3, 2, 1, '2021-03-02 06:08:31', '2021-03-02 06:08:31'),
-(5, 3, 3, 1, '2021-03-02 06:08:31', '2021-03-02 06:08:31'),
-(6, 4, 1, 1, '2021-03-06 10:35:14', '2021-03-06 10:35:14'),
-(7, 5, 1, 1, '2021-03-06 10:35:29', '2021-03-06 10:35:29'),
-(8, 6, 1, 1, '2021-03-06 10:35:54', '2021-03-06 10:35:54'),
-(9, 7, 1, 2, '2021-03-06 10:37:22', '2021-03-06 10:37:22'),
-(10, 10, 1, 1, '2021-03-06 10:48:06', '2021-03-06 10:48:06'),
-(11, 11, 1, 1, '2021-03-06 10:48:21', '2021-03-06 10:48:21'),
-(12, 12, 1, 1, '2021-03-12 05:29:57', '2021-03-12 05:29:57'),
-(13, 13, 1, 1, '2021-03-12 06:11:52', '2021-03-12 06:11:52'),
-(14, 14, 2, 2, '2021-03-13 06:00:35', '2021-03-13 06:00:35'),
-(15, 14, 3, 1, '2021-03-13 06:00:36', '2021-03-13 06:00:36'),
-(16, 16, 1, 2, '2021-04-23 05:33:17', '2021-04-23 05:33:17'),
-(17, 17, 1, 2, '2021-04-23 05:33:17', '2021-04-23 05:33:17'),
-(18, 15, 1, 2, '2021-04-23 05:33:17', '2021-04-23 05:33:17'),
-(19, 18, 2, 1, '2021-04-23 05:53:29', '2021-04-23 05:53:29'),
-(20, 19, 1, 1, '2021-04-23 05:54:07', '2021-04-23 05:54:07'),
-(21, 20, 2, 1, '2021-04-23 06:06:19', '2021-04-23 06:06:19'),
-(22, 21, 2, 1, '2021-04-23 06:15:35', '2021-04-23 06:15:35'),
-(23, 22, 1, 1, '2021-04-23 06:20:43', '2021-04-23 06:20:43'),
-(24, 23, 2, 1, '2021-04-23 06:21:04', '2021-04-23 06:21:04'),
-(25, 24, 2, 1, '2021-04-23 06:21:24', '2021-04-23 06:21:24'),
-(26, 25, 2, 1, '2021-04-24 05:20:55', '2021-04-24 05:20:55'),
-(27, 26, 5, 1, '2021-04-24 05:22:30', '2021-04-24 05:22:30'),
-(28, 27, 5, 1, '2021-04-24 05:23:59', '2021-04-24 05:23:59'),
-(29, 28, 5, 1, '2021-04-24 05:24:29', '2021-04-24 05:24:29'),
-(30, 29, 6, 1, '2021-04-24 05:26:37', '2021-04-24 05:26:37'),
-(31, 30, 2, 1, '2021-04-24 05:27:25', '2021-04-24 05:27:25'),
-(32, 30, 3, 2, '2021-04-24 05:27:25', '2021-04-24 05:27:25'),
-(33, 30, 11, 1, '2021-04-24 05:27:25', '2021-04-24 05:27:25');
+(1, 1, NULL, 1, '2021-03-01 08:13:11', '2021-03-01 08:13:11'),
+(2, 2, NULL, 1, '2021-03-02 06:05:04', '2021-03-02 06:05:04'),
+(3, 3, NULL, 1, '2021-03-02 06:08:31', '2021-03-02 06:08:31'),
+(4, 3, NULL, 1, '2021-03-02 06:08:31', '2021-03-02 06:08:31'),
+(5, 3, NULL, 1, '2021-03-02 06:08:31', '2021-03-02 06:08:31'),
+(6, 4, NULL, 1, '2021-03-06 10:35:14', '2021-03-06 10:35:14'),
+(7, 5, NULL, 1, '2021-03-06 10:35:29', '2021-03-06 10:35:29'),
+(8, 6, NULL, 1, '2021-03-06 10:35:54', '2021-03-06 10:35:54'),
+(9, 7, NULL, 2, '2021-03-06 10:37:22', '2021-03-06 10:37:22'),
+(10, 10, NULL, 1, '2021-03-06 10:48:06', '2021-03-06 10:48:06'),
+(11, 11, NULL, 1, '2021-03-06 10:48:21', '2021-03-06 10:48:21'),
+(12, 12, NULL, 1, '2021-03-12 05:29:57', '2021-03-12 05:29:57'),
+(13, 13, NULL, 1, '2021-03-12 06:11:52', '2021-03-12 06:11:52'),
+(14, 14, NULL, 2, '2021-03-13 06:00:35', '2021-03-13 06:00:35'),
+(15, 14, NULL, 1, '2021-03-13 06:00:36', '2021-03-13 06:00:36'),
+(16, 16, NULL, 2, '2021-04-23 05:33:17', '2021-04-23 05:33:17'),
+(17, 17, NULL, 2, '2021-04-23 05:33:17', '2021-04-23 05:33:17'),
+(18, 15, NULL, 2, '2021-04-23 05:33:17', '2021-04-23 05:33:17'),
+(19, 18, NULL, 1, '2021-04-23 05:53:29', '2021-04-23 05:53:29'),
+(20, 19, NULL, 1, '2021-04-23 05:54:07', '2021-04-23 05:54:07'),
+(21, 20, NULL, 1, '2021-04-23 06:06:19', '2021-04-23 06:06:19'),
+(22, 21, NULL, 1, '2021-04-23 06:15:35', '2021-04-23 06:15:35'),
+(23, 22, NULL, 1, '2021-04-23 06:20:43', '2021-04-23 06:20:43'),
+(24, 23, NULL, 1, '2021-04-23 06:21:04', '2021-04-23 06:21:04'),
+(25, 24, NULL, 1, '2021-04-23 06:21:24', '2021-04-23 06:21:24'),
+(26, 25, NULL, 1, '2021-04-24 05:20:55', '2021-04-24 05:20:55'),
+(27, 26, NULL, 1, '2021-04-24 05:22:30', '2021-04-24 05:22:30'),
+(28, 27, NULL, 1, '2021-04-24 05:23:59', '2021-04-24 05:23:59'),
+(29, 28, NULL, 1, '2021-04-24 05:24:29', '2021-04-24 05:24:29'),
+(30, 29, NULL, 1, '2021-04-24 05:26:37', '2021-04-24 05:26:37'),
+(31, 30, NULL, 1, '2021-04-24 05:27:25', '2021-04-24 05:27:25'),
+(32, 30, NULL, 2, '2021-04-24 05:27:25', '2021-04-24 05:27:25'),
+(33, 30, NULL, 1, '2021-04-24 05:27:25', '2021-04-24 05:27:25');
 
 -- --------------------------------------------------------
 
@@ -783,6 +767,7 @@ CREATE TABLE `products` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `packsize` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `price` double NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `images` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -797,33 +782,24 @@ CREATE TABLE `products` (
   `additional_information` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `quantity` int(11) NOT NULL,
   `sku` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ex_factory_price` double DEFAULT NULL,
+  `list_price_per_case` double DEFAULT NULL,
+  `units_per_case` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `wholesaler_quantity` int(11) DEFAULT 1,
+  `wholesaler_price` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`, `images`, `available`, `slug`, `featured`, `model`, `colour`, `brand`, `tax`, `information`, `additional_information`, `quantity`, `sku`, `created_at`, `updated_at`) VALUES
-(1, 'Laptop Bag', '<p>Waterproof, stylish, laptop, colourful bag</p>', 2000, 'products\\February2021\\BxnU0WYckYMX25J7nWWS.jpg', '[\"products\\\\February2021\\\\NxXdisaQUVqsDcdXB3IZ.jpg\",\"products\\\\February2021\\\\WbfAWDSFznGtws39cFkB.jpg\",\"products\\\\February2021\\\\Cfl50BiyKmPISYDOtyUI.jpg\",\"products\\\\February2021\\\\gqMMrWrrGBXo4V2OYc1Q.jpg\"]', 1, 'LaptopBag', 0, 'NA', 'Yellow', 'NA', 0.00, '<p>qwerty</p>', '<p>qwerty</p>', 0, 'qwerty', '2021-01-26 22:40:12', '2021-04-23 06:20:43'),
-(2, 'Laptop', '<p>HP 250GB SSD 16GB RAM</p>', 200000, 'products\\February2021\\BxnU0WYckYMX25J7nWWS.jpg', NULL, 1, 'Laptop', 1, 'LG', 'Silver', 'LG', 0.00, '<p>qerty</p>', '<p>qerty</p>', 0, 'qwerty', '2021-01-26 22:40:12', '2021-04-24 05:27:30'),
-(3, 'Headphones', '<p>Bluetooth Headphones Noise cancelling</p>', 4000, 'products\\February2021\\BxnU0WYckYMX25J7nWWS.jpg', '[\"products\\\\February2021\\\\NxXdisaQUVqsDcdXB3IZ.jpg\",\"products\\\\February2021\\\\WbfAWDSFznGtws39cFkB.jpg\",\"products\\\\February2021\\\\Cfl50BiyKmPISYDOtyUI.jpg\",\"products\\\\February2021\\\\gqMMrWrrGBXo4V2OYc1Q.jpg\"]', 1, 'Headphones', 1, 'LG', 'White', 'NA', 0.00, '<p>qwerty</p>', '<p>qwerty</p>', 4, 'qwerty', '2021-01-26 22:40:12', '2021-04-24 05:27:30'),
-(4, 'Bluetooth Speaker', 'Bluetooth Speaker all devices compatible', 8000, 'products\\February2021\\BxnU0WYckYMX25J7nWWS.jpg', NULL, 1, 'BluetoothSpeaker', 1, '', '', '', 0.00, '', '', 6, '', '2021-01-26 22:40:12', '2021-01-26 22:40:12'),
-(5, 'Earphones', 'Sony Earphones all devices compatible', 500, 'products\\February2021\\BxnU0WYckYMX25J7nWWS.jpg', NULL, 1, 'Earphones', 1, '', '', '', 0.00, '', '', 5, '', '2021-01-26 22:40:12', '2021-04-24 05:24:37'),
-(6, 'Earpods', 'Sony Earpods all devices compatible', 600, 'products\\February2021\\BxnU0WYckYMX25J7nWWS.jpg', NULL, 1, 'Earpods', 0, '', '', '', 0.00, '', '', 5, '', '2021-01-26 22:40:12', '2021-04-24 05:26:41'),
-(7, 'Voltaire PC', 'High end gaming PC', 2000, 'products\\February2021\\BxnU0WYckYMX25J7nWWS.jpg', NULL, 1, 'voltairepc', 0, '', '', '', 0.00, '', '', 6, '', '2021-01-26 22:40:12', '2021-01-26 22:40:12'),
-(9, 'Keyes PC', 'High end work PC', 200000, 'products\\February2021\\BxnU0WYckYMX25J7nWWS.jpg', NULL, 1, 'keyespc', 0, '', '', '', 0.00, '', '', 6, '', '2021-01-26 22:40:12', '2021-01-26 22:40:12'),
-(11, 'Rene PC', 'High end AI PC', 200000, 'products\\February2021\\BxnU0WYckYMX25J7nWWS.jpg', NULL, 1, 'renepc', 0, '', '', '', 0.00, '', '', 5, '', '2021-01-26 22:40:12', '2021-04-24 05:27:30'),
-(12, 'RBC Headphones', 'Bluetooth Headphones Noise cancelling', 4000, 'products\\February2021\\BxnU0WYckYMX25J7nWWS.jpg', NULL, 1, 'RBC Headphones', 0, '', '', '', 0.00, '', '', 6, '', '2021-01-26 22:40:12', '2021-01-26 22:40:12'),
-(15, 'Mouse', '<p>Bluetooth mouse</p>', 2000, 'products\\February2021\\VlfgebLWjN2L847uXk96.jpg', '[\"products\\\\February2021\\\\yKbfOMFxkx7tJoIXxcvP.jpg\",\"products\\\\February2021\\\\ra8zmEjIhGqtTgjblHDM.jpg\"]', 0, 'mouse', 1, 'Mouse', 'Black', 'Rat', 0.00, '<p>Great mouse</p>', '<p>Really great mouse</p>', 6, 'qwerty', '2021-02-24 04:38:26', '2021-02-24 04:38:26'),
-(20, 'Gaming Mouse', '<p>Mouse for high speed gaming</p>', 200, 'products\\February2021\\j6wkcsHzOUSpPtsNODu2.jpg', NULL, 1, 'gamingmse', 1, 'test', 'test', 'test', 0.00, '<p>test</p>', '<p>test</p>', 6, 's', '2021-02-24 04:47:10', '2021-02-24 04:47:10'),
-(21, 'Gaming Mouse', '<p>Mouse for high speed gaming</p>', 250, 'products\\February2021\\CcQYq4SOLxmrG5Fn04Xl.jpg', NULL, 0, 'gamingmouse', 1, 'test', 'test', 'test', 0.00, '<p>test</p>', '<p>test</p>', 6, 's', '2021-02-24 04:47:52', '2021-02-24 04:47:52'),
-(24, 'LG Phone', '<p>Great phone. 32 GB storage</p>', 24994, 'products\\March2021\\LEqy1gC3HmR3mHNjqiiy.jpg', '[\"products\\\\March2021\\\\6OkP6VUmjsuV8jpEznxB.jpg\",\"products\\\\March2021\\\\ej2uBABVHj2znNBXS9Hs.jpg\"]', 1, 'lgphone2', 0, 'LG', 'Blue', 'LG', 0.00, '<p>USB C</p>', '<p>NA</p>', 6, 'qwerty', '2021-03-13 06:25:03', '2021-03-13 06:26:59'),
-(28, 'Keyes Home PC', '<p>High end work PC</p>', 200000, 'products\\February2021\\BxnU0WYckYMX25J7nWWS.jpg', NULL, 1, 'keyeshomepc', 0, 'na', 'white', 'na', 0.00, '<p>na</p>', '<p>na</p>', 6, 'qwerty', '2021-01-26 22:40:12', '2021-03-27 09:37:41'),
-(29, 'LG Phone S', '<p>LG Phone (the new one)</p>', 20000, 'products\\April2021\\7cidBrwPrUxkYV1OI54B.jpg', NULL, 1, 'lgphones', 0, 'LG', 'Silver', 'LG', 0.00, '<p>Great</p>', '<p>Great</p>', 7, 'qwerty', '2021-04-22 05:53:22', '2021-04-22 05:53:22'),
-(30, 'test', '<p>HP EliteBook 8460P&nbsp; has made everyday computing&nbsp; easier. With the HP EliteBook 8460P Notebook PC you enjoy true reliability on the road or at home with a simple, yet powerful value-packed Notebook that gets the job done.</p>\r\n<p>With Intel Core i5 Processor and 4GB Memory, the EliteBook 8460 makes for a speedy and efficient PC. The 500 GB Hard Drive provides ample space to store all crucial data safely.</p>\r\n<p>This HP 8460P comes equipped with an Intel Core i5 processor to ensure fast processing of data for your heavy tasks and browsing</p>\r\n<p>&nbsp;</p>\r\n<p>The metal lid on the 8460P&nbsp; is not just for looks; it also helps protect the notebook from the hazards of travel, being able to withstand up to 300 pounds of pressure. Also, a spill-resistant keyboard with drains keeps small amounts of liquid from damaging the system&nbsp; Ports and WebcamOn the right side of the 8460P&nbsp; is a DVD drive, Ethernet, modem, and a combo eSATA/USB 2.0 port that can provide juice to USB-powered devices even when the system is off. On the left are three more USB ports, FireWire, headphone and mic, and an ExpressCard/54 slot. On the front edge is an SD Card reader, and on the back is VGA and DisplayPort connections for outputting video to a larger screen.&nbsp;</p>', 10, 'products\\April2021\\Wp3HmXgxE6Rkh6PU2n2k.jpg', NULL, 1, 'testprod', 0, 'NA', 'Black', 'NA', 0.00, '<p>HP EliteBook 8460P&nbsp; has made everyday computing&nbsp; easier. With the HP EliteBook 8460P Notebook PC you enjoy true reliability on the road or at home with a simple, yet powerful value-packed Notebook that gets the job done.</p>\r\n<p>With Intel Core i5 Processor and 4GB Memory, the EliteBook 8460 makes for a speedy and efficient PC. The 500 GB Hard Drive provides ample space to store all crucial data safely.</p>\r\n<p>This HP 8460P comes equipped with an Intel Core i5 processor to ensure fast processing of data for your heavy tasks and browsing</p>\r\n<p>&nbsp;</p>\r\n<p>The metal lid on the 8460P&nbsp; is not just for looks; it also helps protect the notebook from the hazards of travel, being able to withstand up to 300 pounds of pressure. Also, a spill-resistant keyboard with drains keeps small amounts of liquid from damaging the system&nbsp; Ports and WebcamOn the right side of the 8460P&nbsp; is a DVD drive, Ethernet, modem, and a combo eSATA/USB 2.0 port that can provide juice to USB-powered devices even when the system is off. On the left are three more USB ports, FireWire, headphone and mic, and an ExpressCard/54 slot. On the front edge is an SD Card reader, and on the back is VGA and DisplayPort connections for outputting video to a larger screen.&nbsp;</p>', '<p>HP EliteBook 8460P&nbsp; has made everyday computing&nbsp; easier. With the HP EliteBook 8460P Notebook PC you enjoy true reliability on the road or at home with a simple, yet powerful value-packed Notebook that gets the job done.</p>\r\n<p>With Intel Core i5 Processor and 4GB Memory, the EliteBook 8460 makes for a speedy and efficient PC. The 500 GB Hard Drive provides ample space to store all crucial data safely.</p>\r\n<p>This HP 8460P comes equipped with an Intel Core i5 processor to ensure fast processing of data for your heavy tasks and browsing</p>\r\n<p>&nbsp;</p>\r\n<p>The metal lid on the 8460P&nbsp; is not just for looks; it also helps protect the notebook from the hazards of travel, being able to withstand up to 300 pounds of pressure. Also, a spill-resistant keyboard with drains keeps small amounts of liquid from damaging the system&nbsp; Ports and WebcamOn the right side of the 8460P&nbsp; is a DVD drive, Ethernet, modem, and a combo eSATA/USB 2.0 port that can provide juice to USB-powered devices even when the system is off. On the left are three more USB ports, FireWire, headphone and mic, and an ExpressCard/54 slot. On the front edge is an SD Card reader, and on the back is VGA and DisplayPort connections for outputting video to a larger screen.&nbsp;</p>', 10, 'qwerty', '2021-04-24 09:42:03', '2021-04-24 09:42:03'),
-(31, 'test2', '<p><strong style=\"box-sizing: border-box; color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\">HP EliteBook 8460P</strong><span style=\"color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\">&nbsp; has made everyday computing&nbsp; easier. With the HP EliteBook 8460P Notebook PC you enjoy true reliability on the road or at home with a simple, yet powerful value-packed Notebook that gets the job done.</span><br style=\"box-sizing: border-box; color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\" /><span style=\"color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\">With&nbsp;Intel Core i5&nbsp;Processor and 4GB Memory, the EliteBook 8460 makes for a speedy and efficient PC. The 500 GB Hard Drive provides ample space to store all crucial data safely.</span><br style=\"box-sizing: border-box; color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\" /><span style=\"color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\">This HP 8460P comes equipped with an Intel Core i5 processor to ensure fast processing of data for your heavy tasks and browsing</span><br style=\"box-sizing: border-box; color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\" /><br style=\"box-sizing: border-box; color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\" /><span style=\"color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\">The metal lid on the 8460P&nbsp;&nbsp;is not just for looks; it also helps protect the notebook from the hazards of travel, being able to withstand up to 300 pounds of pressure. Also, a spill-resistant keyboard with drains keeps small amounts of liquid from damaging the system&nbsp;&nbsp;Ports and WebcamOn the right side of the 8460P&nbsp;&nbsp;is a DVD drive, Ethernet, modem, and a combo eSATA/USB 2.0 port that can provide juice to USB-powered devices even when the system is off. On the left are three more USB ports, FireWire, headphone and mic, and an ExpressCard/54 slot. On the front edge is an SD Card reader, and on the back is VGA and DisplayPort connections for outputting video to a larger screen.&nbsp;</span><strong style=\"box-sizing: border-box; color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\">HP EliteBook 8460P</strong><span style=\"color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\">&nbsp; has made everyday computing&nbsp; easier. With the HP EliteBook 8460P Notebook PC you enjoy true reliability on the road or at home with a simple, yet powerful value-packed Notebook that gets the job done.</span></p>\r\n<p><span style=\"color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\">With&nbsp;Intel Core i5&nbsp;Processor and 4GB Memory, the EliteBook 8460 makes for a speedy and efficient PC. The 500 GB Hard Drive provides ample space to store all crucial data safely.</span><br style=\"box-sizing: border-box; color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\" /><span style=\"color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\">This HP 8460P comes equipped with an Intel Core i5 processor to ensure fast processing of data for your heavy tasks and browsing</span><br style=\"box-sizing: border-box; color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\" /><br style=\"box-sizing: border-box; color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\" /><span style=\"color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\">The metal lid on the 8460P&nbsp;&nbsp;is not just for looks; it also helps protect the notebook from the hazards of travel, being able to withstand up to 300 pounds of pressure. Also, a spill-resistant keyboard with drains keeps small amounts of liquid from damaging the system&nbsp;&nbsp;Ports and WebcamOn the right side of the 8460P&nbsp;&nbsp;is a DVD drive, Ethernet, modem, and a combo eSATA/USB 2.0 port that can provide juice to USB-powered devices even when the system is off. On the left are three more USB ports, FireWire, headphone and mic, and an ExpressCard/54 slot. On the front edge is an SD Card reader, and on the back is VGA and DisplayPort connections for outputting video to a larger screen.&nbsp;</span></p>', 1000, 'products\\April2021\\pu2vLL6KJFcVuiJXqjFT.jpg', NULL, 1, 'test2', 0, 'NA', 'NA', 'NA', 0.00, '<p><strong style=\"box-sizing: border-box; color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\">HP EliteBook 8460P</strong><span style=\"color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\">&nbsp; has made everyday computing&nbsp; easier. With the HP EliteBook 8460P Notebook PC you enjoy true reliability on the road or at home with a simple, yet powerful value-packed Notebook that gets the job done.</span><br style=\"box-sizing: border-box; color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\" /><span style=\"color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\">With&nbsp;Intel Core i5&nbsp;Processor and 4GB Memory, the EliteBook 8460 makes for a speedy and efficient PC. The 500 GB Hard Drive provides ample space to store all crucial data safely.</span><br style=\"box-sizing: border-box; color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\" /><span style=\"color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\">This HP 8460P comes equipped with an Intel Core i5 processor to ensure fast processing of data for your heavy tasks and browsing</span><br style=\"box-sizing: border-box; color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\" /><br style=\"box-sizing: border-box; color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\" /><span style=\"color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\">The metal lid on the 8460P&nbsp;&nbsp;is not just for looks; it also helps protect the notebook from the hazards of travel, being able to withstand up to 300 pounds of pressure. Also, a spill-resistant keyboard with drains keeps small amounts of liquid from damaging the system&nbsp;&nbsp;Ports and WebcamOn the right side of the 8460P&nbsp;&nbsp;is a DVD drive, Ethernet, modem, and a combo eSATA/USB 2.0 port that can provide juice to USB-powered devices even when the system is off. On the left are three more USB ports, FireWire, headphone and mic, and an ExpressCard/54 slot. On the front edge is an SD Card reader, and on the back is VGA and DisplayPort connections for outputting video to a larger screen.&nbsp;</span><strong style=\"box-sizing: border-box; color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\">HP EliteBook 8460P</strong><span style=\"color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\">&nbsp; has made everyday computing&nbsp; easier. With the HP EliteBook 8460P Notebook PC you enjoy true reliability on the road or at home with a simple, yet powerful value-packed Notebook that gets the job done.</span></p>\r\n<p><span style=\"color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\">With&nbsp;Intel Core i5&nbsp;Processor and 4GB Memory, the EliteBook 8460 makes for a speedy and efficient PC. The 500 GB Hard Drive provides ample space to store all crucial data safely.</span><br style=\"box-sizing: border-box; color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\" /><span style=\"color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\">This HP 8460P comes equipped with an Intel Core i5 processor to ensure fast processing of data for your heavy tasks and browsing</span><br style=\"box-sizing: border-box; color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\" /><br style=\"box-sizing: border-box; color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\" /><span style=\"color: #282828; font-family: Roboto, -apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Helvetica Neue\', Arial, sans-serif;\">The metal lid on the 8460P&nbsp;&nbsp;is not just for looks; it also helps protect the notebook from the hazards of travel, being able to withstand up to 300 pounds of pressure. Also, a spill-resistant keyboard with drains keeps small amounts of liquid from damaging the system&nbsp;&nbsp;Ports and WebcamOn the right side of the 8460P&nbsp;&nbsp;is a DVD drive, Ethernet, modem, and a combo eSATA/USB 2.0 port that can provide juice to USB-powered devices even when the system is off. On the left are three more USB ports, FireWire, headphone and mic, and an ExpressCard/54 slot. On the front edge is an SD Card reader, and on the back is VGA and DisplayPort connections for outputting video to a larger screen.&nbsp;</span></p>', 'NA', 100, 'qwerty', '2021-04-24 09:52:13', '2021-04-24 09:52:13');
+INSERT INTO `products` (`id`, `name`, `description`, `packsize`, `price`, `image`, `images`, `available`, `slug`, `featured`, `model`, `colour`, `brand`, `tax`, `information`, `additional_information`, `quantity`, `sku`, `ex_factory_price`, `list_price_per_case`, `units_per_case`, `created_at`, `updated_at`, `wholesaler_quantity`, `wholesaler_price`) VALUES
+(32, 'Royco', '<p>Royco 500gm jar Beef flavor</p>', NULL, 200, 'products\\November2021\\GfRajfaQfA85eVKr7dnB.png', NULL, 1, 'royco', 1, 'NA', 'NA', 'NA', 0.00, '<p>Beef flavor. High in iron.</p>', 'NA', 500, 'qwerty', NULL, 500, 25, '2021-11-16 02:15:25', '2021-11-16 02:15:25', 15, 4200),
+(34, 'Royco', '<p>Royco 500gm jar Beef flavor</p>', NULL, 200, 'products\\November2021\\ySG9IqS1oNZLdD1GAkxj.png', NULL, 1, 'roycochicken', 1, 'NA', 'NA', 'NA', 0.00, '<p>Beef flavor. High in iron.</p>', 'NA', 500, 'qwerty', NULL, 2000, 30, '2021-11-16 02:15:25', '2021-11-16 02:18:37', 18, 2000),
+(36, 'Royco', '<p>Royco 500gm jar Beef flavor</p>', NULL, 200, 'products\\November2021\\ySG9IqS1oNZLdD1GAkxj.png', NULL, 1, 'altroyco', 1, 'NA', 'NA', 'NA', 0.00, '<p>Beef flavor. High in iron.</p>', 'NA', 500, 'qwerty', NULL, 1400, 12, '2021-11-16 02:15:25', '2021-11-16 02:18:37', 10, 3600),
+(37, 'Royco Xtra', '<p>Test</p>', NULL, 200, 'products\\November2021\\ch0BQRJQ2zrIy2PJyqyB.png', NULL, 1, 'roycoxtra', 1, 'NA', 'NA', 'NA', 0.00, '<p>NA</p>', 'NA', 1000, 'qwerty', NULL, 1450, 24, '2021-11-22 02:31:51', '2021-11-22 03:09:33', 20, 4000);
 
 -- --------------------------------------------------------
 
@@ -845,7 +821,8 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'Administrator', '2021-02-18 05:46:52', '2021-02-18 05:46:52'),
-(2, 'user', 'Normal User', '2021-02-18 05:46:53', '2021-02-18 05:46:53');
+(2, 'Regular User', 'Normal User', '2021-02-18 05:46:53', '2021-11-22 02:34:25'),
+(3, 'Wholesaler', 'Wholesaler', '2021-11-22 02:54:20', '2021-11-22 02:54:20');
 
 -- --------------------------------------------------------
 
@@ -903,6 +880,20 @@ CREATE TABLE `sub_categories` (
 INSERT INTO `sub_categories` (`id`, `category_id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
 (1, 2, 'q', 'w', '2021-04-27 04:33:13', '2021-04-27 04:34:16'),
 (2, 1, 'test', 'testslug', '2021-04-27 05:06:22', '2021-04-27 05:06:22');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sub_category_products`
+--
+
+CREATE TABLE `sub_category_products` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `sub_category_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -982,11 +973,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', '2021-04-22 07:59:08', '$2y$10$uy.Gd1broIJZJxIhBRXcKuaigWDg7DoammRqjYQlxqXQe13we9aLu', 'DgHyvbW3agxMSr5smXR7WVbJ67zXmA42FBNvIzfNGUjvCSAVV7C8YmLn66rl', NULL, '2021-02-18 05:47:30', '2021-04-23 09:25:58'),
-(2, 2, 'Will', 'a@a.com', 'users/default.png', NULL, '$2y$10$wC.NpJaw4iUZ3.0IwuPoQeWT0g0vyc5wYQllBjuPDa5JCETjWUiGi', NULL, NULL, '2021-02-22 08:12:53', '2021-02-22 08:12:55'),
+(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', '2021-04-22 07:59:08', '$2y$10$uy.Gd1broIJZJxIhBRXcKuaigWDg7DoammRqjYQlxqXQe13we9aLu', 'uE1xsOrVFs3kKqXNaQ7Z3sTfoStHlnq5ZvTn9zUJ86PMNs5zONv962RXfyMW', NULL, '2021-02-18 05:47:30', '2021-04-23 09:25:58'),
+(2, 3, 'Will', 'a@a.com', 'users/default.png', NULL, '$2y$10$wC.NpJaw4iUZ3.0IwuPoQeWT0g0vyc5wYQllBjuPDa5JCETjWUiGi', NULL, NULL, '2021-02-22 08:12:53', '2021-12-21 05:55:13'),
 (3, 2, 'John', 'b@b.b', 'users/default.png', NULL, '$2y$10$nRCmp4UK6d/E5mt7q8q4E.60Y0Dun5pULovGOU/0wUqKlbr.9l9qu', NULL, NULL, '2021-02-23 05:36:37', '2021-02-23 05:36:37'),
 (4, 1, 'Will Imo', 'w@w.com', 'users/default.png', NULL, '$2y$10$Jsb9P9hHSBWKWMkBBL2/UeVorqSLPeyhZYUacBWnm2NnuhOkh43oq', NULL, '{\"locale\":\"en\"}', '2021-03-13 06:20:07', '2021-03-13 06:20:54'),
-(5, 2, 'Will', 'w@w.ww', 'users/default.png', '2021-04-22 07:59:08', '$2y$10$83jP1FrvwrPRnLdcPJaxpuqFbxab6qOwwp0bppwUKJyZBZKJPQXYi', NULL, NULL, '2021-04-24 07:51:41', '2021-04-24 07:51:41');
+(5, 2, 'Will', 'w@w.ww', 'users/default.png', '2021-04-22 07:59:08', '$2y$10$83jP1FrvwrPRnLdcPJaxpuqFbxab6qOwwp0bppwUKJyZBZKJPQXYi', NULL, NULL, '2021-04-24 07:51:41', '2021-04-24 07:51:41'),
+(6, 3, 'Will Imo', 'w@w.www', 'users/default.png', NULL, '$2y$10$7a.WxwwR6RnO.kJ5GVjVpOixNytcIfrsJmgavFfqAwRfC9sz3Tpo2', NULL, NULL, '2021-11-20 17:09:17', '2021-11-22 03:37:16'),
+(7, 2, 'Jane Doe', 'j@d.jd', 'users/default.png', NULL, '$2y$10$CwJbVtsd9ZMWJ7tkKz8C/O.drB9pniLVi8sM4rO73o8N0S33fLL0y', NULL, NULL, '2021-11-20 17:10:29', '2021-11-20 17:10:29'),
+(8, 2, 'John Doe', 'j@jd.jd', 'users/default.png', NULL, '$2y$10$EQtAZu18P8LqzjBUy58/wuxAjCkkumC8Fpc8KPab0vQ5hoAbjb/m2', NULL, NULL, '2021-11-20 17:13:52', '2021-11-20 17:13:52'),
+(15, 2, 'Wun', 'w@w2.w', 'users/default.png', NULL, '$2y$10$uJmQA5zhhDa4ttknqWFXfONXQqIuSTxM2Rax6ABynwtTi7a5sU9L.', NULL, NULL, '2021-12-17 02:46:35', '2021-12-17 02:46:35'),
+(16, 2, 'mail', 'm@m.m', 'users/default.png', NULL, '$2y$10$yrF3d6WYXeZp/xOWLhMCmOe4wkC9XVcXP78MCgyAyH9G73joWQmU6', NULL, NULL, '2021-12-17 03:16:12', '2021-12-17 03:16:12'),
+(17, 2, 'mail', 'm@m2.m', 'users/default.png', NULL, '$2y$10$eEQEeA.OAgjjWHKRq4vwmeVCXH260hzxAwsbvv69ofSREJVvhVAPe', NULL, NULL, '2021-12-17 03:17:34', '2021-12-17 03:17:34'),
+(18, 2, 'mail', 'm@m3.m', 'users/default.png', NULL, '$2y$10$lisonIDkqKjEo.xlO4MCdOiLLjfLzATzPjcXyFQztCrwcV6yjHK9S', NULL, NULL, '2021-12-17 03:23:06', '2021-12-17 03:23:06'),
+(19, 2, 'mail', 'm@m4.m', 'users/default.png', NULL, '$2y$10$oJp7lXMpWk7cbxAsPEald.HHE.uKaO3h/mBMX8sz9xPHK99ozILVS', NULL, NULL, '2021-12-17 03:23:26', '2021-12-17 03:23:26');
 
 -- --------------------------------------------------------
 
@@ -1150,6 +1149,14 @@ ALTER TABLE `sub_categories`
   ADD KEY `sub_categories_category_id_foreign` (`category_id`);
 
 --
+-- Indexes for table `sub_category_products`
+--
+ALTER TABLE `sub_category_products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sub_category_products_product_id_foreign` (`product_id`),
+  ADD KEY `sub_category_products_sub_category_id_foreign` (`sub_category_id`);
+
+--
 -- Indexes for table `translations`
 --
 ALTER TABLE `translations`
@@ -1192,13 +1199,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `category_product`
 --
 ALTER TABLE `category_product`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `data_types`
@@ -1228,7 +1235,7 @@ ALTER TABLE `menu_items`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -1264,13 +1271,13 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `settings`
@@ -1285,6 +1292,12 @@ ALTER TABLE `sub_categories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `sub_category_products`
+--
+ALTER TABLE `sub_category_products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `translations`
 --
 ALTER TABLE `translations`
@@ -1294,7 +1307,7 @@ ALTER TABLE `translations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables
@@ -1350,6 +1363,13 @@ ALTER TABLE `permission_role`
 --
 ALTER TABLE `sub_categories`
   ADD CONSTRAINT `sub_categories_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
+
+--
+-- Constraints for table `sub_category_products`
+--
+ALTER TABLE `sub_category_products`
+  ADD CONSTRAINT `sub_category_products_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `sub_category_products_sub_category_id_foreign` FOREIGN KEY (`sub_category_id`) REFERENCES `sub_categories` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `users`
