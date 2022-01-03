@@ -33,7 +33,7 @@ class ShopController extends Controller
             });
             $subcategoryName = optional(SubCategory::where('slug',request()->subcategory)->first())->name;
         } else{
-            $products = Product::take(10);
+            $products = Product::where('available',1)->take(10);
         }
 
         if(request()->sort == 'asc'){
