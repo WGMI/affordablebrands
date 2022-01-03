@@ -17,9 +17,9 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::with('categories')->whereHas('categories',function($query){
-            $query->where('name','Electronics')->where([['featured',true],['available',1]]);
+            $query->where('name','Spices')->where([['featured',true],['available',1]]);
         })->get();
-        return view('index')->with('products',$products);
+        return view('index')->with(['products' => $products,'category' => 'Spices']);
     }
 
     public function switchuser(Request $request){

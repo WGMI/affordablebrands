@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="product-large set-bg" data-setbg="img/products/color.jpg">
-                        <h2>Electronics</h2>
+                        <h2>{{$category}}</h2>
                         <a href="{{url('/shop')}}">Find More</a>
                     </div>
                 </div>
