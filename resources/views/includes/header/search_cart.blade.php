@@ -33,7 +33,7 @@
                     <div class="col-lg-2 col-md-2">
                         <div class="logo">
                             <a href="{{url('/')}}">
-                                <h4>Qikapu</h4>
+                                <img src="{{asset('img/logo2.png')}}" alt="Qikapu"/>
                             </a>
                         </div>
                     </div>

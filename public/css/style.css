@@ -816,7 +816,8 @@ ol {
 -----------------------*/
 
 .hero-items .single-hero-items {
-	height: 725px;
+	background-size: contain;
+	height: 575px;
 	padding-top: 210px;
 }
 
