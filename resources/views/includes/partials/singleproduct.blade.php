@@ -1,6 +1,6 @@
 <div class="product-item">
     <div class="pi-pic">
-        <a href="{{route('shop.show',$p->slug)}}"><img src="{{productImage($p->image)}}" alt=""></a>
+        <a href="{{route('shop.show',$p->slug)}}"><img class="prod_img" src="{{productImage($p->image)}}" alt=""></a>
         <input type="hidden" value="{{route('cart.post')}}" id="postroute"/>
         <!--<div class="sale" id="addedmsg{{$p->id}}" style="display: none"></div>-->
         <span id="addedmsg{{$p->id}}" class="badge badge-success added"></span>

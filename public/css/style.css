@@ -1038,6 +1038,11 @@ ol {
 	padding-bottom: 80px;
 }
 
+.prod_img {
+	height: 330px;
+	width: 270px;
+}
+
 .product-large {
 	height: 620px;
 	margin-left: -15px;
