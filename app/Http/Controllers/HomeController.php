@@ -19,7 +19,7 @@ class HomeController extends Controller
     
     public function index()
     {
-        $this->test = Category::first()->name;
+        $this->test = 'Detergents';//Category::first()->name;
         $products = Product::with('categories')->whereHas('categories',function($query){
             $query->where('name',$this->test)->where([['featured',true],['available',1]]);
         })->get();
