@@ -320,8 +320,9 @@ a {
                                                     <table class="invoice-items" cellpadding="0" cellspacing="0">
                                                         @foreach($order->products as $item)
                                                         <tr>
-                                                            <td>{{$item->name}} ({{$item->pivot->quantity}})</td>
-                                                            <td class="alignright">{{$item->pivot->quantity * $item->price}}</td>
+                                                            <td>{{$item->name}}</td>
+
+                                                            <td class="alignright">Quantity: {{$item->pivot->quantity}}</td>
                                                         </tr>
                                                         @endforeach
 
