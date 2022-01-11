@@ -96,7 +96,7 @@ class CheckoutController extends Controller
             ]);
         }
 
-        Mail::to($order->email)->send(new OrderPlaced($order,$order->products()));
+        Mail::to($order->email)->send(new OrderPlaced($order,$order->products(),$amount));
 
         //Decrease quntity of products in table
         $this->decreaseQuantities();
