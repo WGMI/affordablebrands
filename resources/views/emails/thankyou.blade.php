@@ -324,10 +324,12 @@ a {
                                                             <td class="alignright">{{$item->pivot->quantity * $item->price}}</td>
                                                         </tr>
                                                         @endforeach
+
                                                         <!-- <tr class="total">
                                                             <td class="alignright" width="80%">Total</td>
                                                             <td class="alignright">{{$order->amount}}</td>
                                                         </tr> -->
+                                                        
                                                     </table>
                                                 </td>
                                             </tr>
