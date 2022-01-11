@@ -325,10 +325,10 @@ a {
                                                         </tr>
                                                         @endforeach
 
-                                                        <!-- <tr class="total">
+                                                        <tr class="total">
                                                             <td class="alignright" width="80%">Total</td>
-                                                            <td class="alignright">{{$order->amount}}</td>
-                                                        </tr> -->
+                                                            <td class="alignright">{{$amount}}</td>
+                                                        </tr>
                                                         
                                                     </table>
                                                 </td>

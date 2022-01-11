@@ -30,6 +30,14 @@ class TestController extends Controller
         // $subcategories .= "</ul>";
 
         // return $subcategories;
-        dd(Cart::content());
+
+        //dd(Cart::content());
+        $amount = 0;
+        foreach(Cart::content() as $c){
+            $amount += $c->price;
+        }
+        dd($amount);
+
+        //dd(Order::find(32)->amount);
     }
 }

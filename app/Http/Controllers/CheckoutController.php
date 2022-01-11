@@ -84,8 +84,11 @@ class CheckoutController extends Controller
             'payment' => $request->payment
         ]);
 
+        $amount = 0;
+
         //Insert into order_product
         foreach(Cart::content() as $item){
+            $amount += $item->price;
             OrderProduct::create([
                 'order_id' => $order->id,
                 'product_id' => $item->model->id,
