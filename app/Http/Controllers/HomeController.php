@@ -27,10 +27,10 @@ class HomeController extends Controller
         $section2 = Product::with('categories')->whereHas('categories',function($query){
             $query->where('name','Spices')->where([['featured',true],['available',1]]);
         })->get();
-        $section2 = Product::with('categories')->whereHas('categories',function($query){
+        $section3 = Product::with('categories')->whereHas('categories',function($query){
             $query->where('name','Health & Beauty')->where([['featured',true],['available',1]]);
         })->get();
-        return view('index')->with(['products' => $products,'category' => $cat1]);
+        return view('index')->with(['products' => $products,'section2' => $section2,'section3' => $section3,'category' => $cat1]);
     }
 
     public function switchuser(Request $request){
