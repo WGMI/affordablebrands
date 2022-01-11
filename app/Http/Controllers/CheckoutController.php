@@ -73,6 +73,7 @@ class CheckoutController extends Controller
         //Handle payment
 
         //Insert into orders
+        $type = (auth()->user()->role_id == 3) ? 'Wholesale' : 'Retail' ;
         $order = Order::create([
             'user_id' => auth()->user() ? auth()->user()->id : null,
             'email' => $request->email,
@@ -81,7 +82,8 @@ class CheckoutController extends Controller
             'street' => $request->street,
             'zip' => $request->zip,
             'phone' => $request->phone,
-            'payment' => $request->payment
+            'payment' => $request->payment,
+            'type' => $type,
         ]);
 
         $amount = 0;
