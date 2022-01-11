@@ -324,10 +324,10 @@ a {
                                                             <td class="alignright">{{$item->pivot->quantity * $item->price}}</td>
                                                         </tr>
                                                         @endforeach
-                                                        <tr class="total">
+                                                        <!-- <tr class="total">
                                                             <td class="alignright" width="80%">Total</td>
                                                             <td class="alignright">{{$order->amount}}</td>
-                                                        </tr>
+                                                        </tr> -->
                                                     </table>
                                                 </td>
                                             </tr>
@@ -336,12 +336,12 @@ a {
                                 </tr>
                                 <tr>
                                     <td class="content-block">
-                                        <a href="{{url('/')}}">Back To Affordable Brands</a>
+                                        <a href="{{url('/')}}">Back To Qikapu</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="content-block">
-                                        Affordable Brands
+                                        Qikapu
                                     </td>
                                 </tr>
                             </table>
