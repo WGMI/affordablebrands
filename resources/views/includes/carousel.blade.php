@@ -32,7 +32,7 @@
                     </div> -->
                 </div>
             </div>
-            <div class="single-hero-items set-bg" data-setbg="img/hero-3.jpg">
+            <div class="single-hero-items set-bg" data-setbg="img/hero-1.jpg">
                 <div class="container">
                     <div class="row">
                         <!-- <div class="col-lg-5">
