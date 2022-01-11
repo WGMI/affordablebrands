@@ -15,15 +15,22 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    protected $test;
     
     public function index()
     {
-        $this->test = 'Detergents';//Category::first()->name;
+        $cat1 = 'Detergents';
+        $cat2 = 'Spices';
+        $cat3 = 'Health & Beauty';
         $products = Product::with('categories')->whereHas('categories',function($query){
-            $query->where('name',$this->test)->where([['featured',true],['available',1]]);
+            $query->where('name',$cat1)->where([['featured',true],['available',1]]);
         })->get();
-        return view('index')->with(['products' => $products,'category' => $this->test]);
+        $section2 = Product::with('categories')->whereHas('categories',function($query){
+            $query->where('name',$cat2)->where([['featured',true],['available',1]]);
+        })->get();
+        $section2 = Product::with('categories')->whereHas('categories',function($query){
+            $query->where('name',$cat3)->where([['featured',true],['available',1]]);
+        })->get();
+        return view('index')->with(['products' => $products,'category' => $cat1]);
     }
 
     public function switchuser(Request $request){
