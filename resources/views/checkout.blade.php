@@ -66,7 +66,7 @@
                             <ul class="order-table">
                                 <li>Product <span>Total</span></li>
                                 @foreach(Cart::content() as $item)
-                                	<li class="fw-normal">{{$item->model->name}} x {{$item->qty}} <span>{{$item->model->presentPrice()}}</span></li>
+                                	<li class="fw-normal">{{$item->model->name}} x {{$item->qty}} <span>{{$item->price}}</span></li>
                                 @endforeach
                                 <li class="total-price">Total <span>{{presentPrice(Cart::total())}}</span></li>
                             </ul>
