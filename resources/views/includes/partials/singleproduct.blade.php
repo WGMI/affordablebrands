@@ -26,7 +26,13 @@
                     @csrf
                     <input type="hidden" name="id" value="{{$p->id}}">
                     <input type="hidden" name="name" value="{{$p->name}}">
+                    @auth
+                    @if(auth()->user()->role_id == 3)
+                    <input type="hidden" name="price" value="{{$p->list_price_per_case}}">
+                    @else
                     <input type="hidden" name="price" value="{{$p->price}}">
+                    @endif
+                    @endauth
                     <input type="hidden" value="1" name="qty">
                     <input type="hidden" name="productqty" value="{{$p->quantity}}">
                 </form>

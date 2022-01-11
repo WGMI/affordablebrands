@@ -52,7 +52,13 @@
                                 <div class="pd-desc">
                                     <p>{!!$product->description!!}</p>
                                     <p style="color: {{$stock[1]}}">{{$stock[0]}}</p>
+                                    @auth
+                                    @if(auth()->user()->role_id == 3)
+                                    <h4>{{$product->presentWholesalePrice()}}</h4>
+                                    @else
                                     <h4>{{$product->presentPrice()}}</h4>
+                                    @endif
+                                    @endauth
                                 </div>
                                 <!--
                                 <div class="pd-desc">
@@ -101,7 +107,13 @@
                                         @csrf
                                         <input type="hidden" name="id" value="{{$product->id}}">
                                         <input type="hidden" name="name" value="{{$product->name}}">
+                                        @auth
+                                        @if(auth()->user()->role_id == 3)
+                                        <input type="hidden" name="price" value="{{$product->list_price_per_case}}">
+                                        @else
                                         <input type="hidden" name="price" value="{{$product->price}}">
+                                        @endif
+                                        @endauth
                                         <input type="hidden" name="productqty" value="{{$product->quantity}}">
                                         <div class="pro-qty">
                                             <input type="text" value="1" name="qty" id="qty">
@@ -157,7 +169,13 @@
                                         <tr>
                                             <td class="p-catagory">Price</td>
                                             <td>
+                                                @auth
+                                                @if(auth()->user()->role_id == 3)
+                                                <div class="p-price">{{$product->presentWholesalePrice()}}</div>
+                                                @else
                                                 <div class="p-price">{{$product->presentPrice()}}</div>
+                                                @endif
+                                                @endauth
                                             </td>
                                         </tr>
                                         <tr>

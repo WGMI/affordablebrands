@@ -15,6 +15,10 @@ class Product extends Model
     	return ' Ksh '.$this->price;
     }
 
+    public function presentWholesalePrice(){
+    	return ' Ksh '.$this->list_price_per_case;
+    }
+
     public function categories(){
     	return $this->belongsToMany('App\Category');
     }

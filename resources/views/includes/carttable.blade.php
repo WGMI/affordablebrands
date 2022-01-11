@@ -16,7 +16,7 @@
                 <td class="cart-title">
                     <h5>{{$item->model->name}}</h5>
                 </td>
-                <td class="p-price">{{$item->model->presentPrice()}}</td>
+                <td class="p-price">{{$item->price}}</td>
                 <td class="qua-col">
                     <form action="{{url('/cartupdate')}}/{{$item->rowId}}" method="POST">
                         @csrf
@@ -27,7 +27,7 @@
                         </select>
                     </form>
                 </td>
-                <td class="total-price">Ksh {{$item->qty * $item->model->price}}</td>
+                <td class="total-price">Ksh {{$item->qty * $item->price}}</td>
                 <td class="close-td">
                     <form action="{{route('cart.destroy',$item->rowId)}}" method="POST" id="remove-{{$item->rowId}}">
                         @csrf
