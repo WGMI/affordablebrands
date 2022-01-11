@@ -816,7 +816,8 @@ ol {
 -----------------------*/
 
 .hero-items .single-hero-items {
-	height: 725px;
+	background-size: contain;
+	height: 575px;
 	padding-top: 210px;
 }
 
@@ -1035,6 +1036,11 @@ ol {
 	padding-left: 65px;
 	padding-top: 0;
 	padding-bottom: 80px;
+}
+
+.prod_img {
+	height: 330px;
+	width: 270px;
 }
 
 .product-large {

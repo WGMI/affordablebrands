@@ -14,12 +14,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    protected $test;
+    
     public function index()
     {
+        $this->test = 'Detergents';//Category::first()->name;
         $products = Product::with('categories')->whereHas('categories',function($query){
-            $query->where('name','Spices')->where([['featured',true],['available',1]]);
+            $query->where('name',$this->test)->where([['featured',true],['available',1]]);
         })->get();
-        return view('index')->with(['products' => $products,'category' => 'Spices']);
+        return view('index')->with(['products' => $products,'category' => $this->test]);
     }
 
     public function switchuser(Request $request){
