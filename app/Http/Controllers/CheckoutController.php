@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Cart;
 use Illuminate\Support\Facades\Mail;
 use App\Order;
@@ -65,47 +66,51 @@ class CheckoutController extends Controller
             'county'=>'required',
             'city'=>'required',
             'street'=>'required',
-            'phone'=>'required'
+            'phone'=>'required | digits:10 | regex:/(07)[0-9]{8}/'
         ],
-            ['email.unique' => 'An account with this email exists. Please sign in if it is yours.']
+            [
+                'email.unique' => 'An account with this email exists. Please sign in if it is yours.'
+            ]
         );
 
-        //Handle payment
-
         //Insert into orders
-        $type = (auth()->user()->role_id == 3) ? 'Wholesale' : 'Retail' ;
-        $order = Order::create([
-            'user_id' => auth()->user() ? auth()->user()->id : null,
-            'email' => $request->email,
-            'county' => $request->county,
-            'city' => $request->city,
-            'street' => $request->street,
-            'zip' => $request->zip,
-            'phone' => $request->phone,
-            'payment' => $request->payment,
-            'type' => $type,
-        ]);
-
-        $amount = 0;
-
-        //Insert into order_product
-        foreach(Cart::content() as $item){
-            $amount += $item->price;
-            OrderProduct::create([
-                'order_id' => $order->id,
-                'product_id' => $item->model->id,
-                'quantity' => $item->qty
+        if($request->payment == 'mrn'){
+            $mpesacontroller = new MpesaController();
+            $mpesacontroller->express($request->phone);
+        }else{
+            $type = (auth()->user()->role_id == 3) ? 'Wholesale' : 'Retail' ;
+            $order = Order::create([
+                'user_id' => auth()->user() ? auth()->user()->id : null,
+                'email' => $request->email,
+                'county' => $request->county,
+                'city' => $request->city,
+                'street' => $request->street,
+                'zip' => $request->zip,
+                'phone' => $request->phone,
+                'payment' => $request->payment,
+                'type' => $type,
             ]);
+
+            $amount = 0;
+
+            //Insert into order_product
+            foreach(Cart::content() as $item){
+                $amount += $item->price;
+                OrderProduct::create([
+                    'order_id' => $order->id,
+                    'product_id' => $item->model->id,
+                    'quantity' => $item->qty
+                ]);
+            }
+
+            Mail::to($order->email)->send(new OrderPlaced($order,$order->products(),$amount));
+
+            //Decrease quntity of products in table
+            $this->decreaseQuantities();
+
+            Cart::instance('default')->destroy();
+            return view('thankyou');
         }
-
-        Mail::to($order->email)->send(new OrderPlaced($order,$order->products(),$amount));
-
-        //Decrease quntity of products in table
-        $this->decreaseQuantities();
-
-        Cart::instance('default')->destroy();
-        return view('thankyou');
-        //dd($request);
     }
 
     /**

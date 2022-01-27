@@ -3,31 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Log;
-use App\Order;
-use App\Category;
-use App\SubCategory;
-use Cart;
+use App\Models\MpesaProcess;
 
-class TestController extends Controller
+class MpesaController extends Controller
 {
-    public function index(){
-    	$key = "3NjcYEAA8rfBAoIOZRZrT8Nq35tenGc7";
+    public function express($number,$amount_to_pay){
+        $key = "3NjcYEAA8rfBAoIOZRZrT8Nq35tenGc7";
         $secret = "YxpQ7FTVXvP6AGN2";
         $businessCode = "174379";
         $passKey = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";
         $callback = url("callback");
 
-        $phone_number = "254708627024";
+        $phone_number = $number;
         $accountRef = "qikapu";
-        $desc = "test";
-        $amount = "1";
+        $desc = "Qikapu payment";
+        $amount = $amount_to_pay;
         $timestamp = date('YmdHis');    
         $password = base64_encode($businessCode.$passKey.$timestamp);
 
         $headers = ['Content-Type:application/json; charset=utf8'];
-        
+
         $access_token_url = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials';
         $initiate_url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
 
@@ -66,24 +61,40 @@ class TestController extends Controller
         curl_setopt($curl, CURLOPT_POSTFIELDS, $data_string);
         curl_setopt($curl, CURLOPT_POST, true);
         
-        $curl_response = curl_exec($curl);
-        Log::info($curl_response);
+        $response = json_encode(curl_exec($curl));
+        $error = curl_error($curl);
+        curl_close($curl);
 
-        Log::info($curl_response);
+        if ($error) {
+            return ['status' => 'error', 'data' => $error];
+
+        } else {
+            $json = json_decode(json_decode($response));
+
+            MpesaProcess::create([
+                'MerchantRequestID' => $json->MerchantRequestID,
+                'CheckoutRequestID' => $json->CheckoutRequestID
+            ]);
+            //return ['status' => 'success', 'data' => $json->CustomerMessage];
+            return view('thankyou');
+        }
     }
 
-    public function callback(){
-        header("Content-Type: application/json");
+    public function callback(Request $request){
+        $content = json_decode($request->getContent());
+        Log::info($content);
 
-        $response = '{
-        "ResultCode": 0, 
-        "ResultDesc": "Confirmation Received Successfully"
-        }';
-
-        // DATA
-        $mpesaResponse = file_get_contents('php://input');
-
-        Log::info($mpesaResponse);
-        Log::info($response);
+        $mpesa_transaction = new MpesaTransaction();
+        $mpesa_transaction->TransactionType = $content->TransactionType;
+        $mpesa_transaction->TransID = $content->TransID;
+        $mpesa_transaction->TransTime = $content->TransTime;
+        $mpesa_transaction->TransAmount = $content->TransAmount;
+        $mpesa_transaction->BillRefNumber = $content->BillRefNumber;
+        $mpesa_transaction->ThirdPartyTransID = $content->ThirdPartyTransID;
+        $mpesa_transaction->MSISDN = $content->MSISDN;
+        $mpesa_transaction->FirstName = $content->FirstName;
+        $mpesa_transaction->MiddleName = $content->MiddleName;
+        $mpesa_transaction->LastName = $content->LastName;
+        $mpesa_transaction->save();
     }
 }

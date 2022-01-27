@@ -47,11 +47,6 @@
                             <input type="text" id="street" class="street-first" placeholder="e.g. Estate/Apartment Name, House No." name="street" value="{{old('street')}}">
                             <p style="color: red">@error('street') {{$message}} @enderror</p>
                         </div>
-                        <div class="col-lg-12"> 
-                            <label for="zip">Postcode / ZIP (optional)</label>
-                            <input type="text" id="zip" name="zip" value="{{old('zip')}}">
-                            <p style="color: red">@error('zip') {{$message}} @enderror</p>
-                        </div>
                         <div class="col-lg-6">
                             <label for="phone">Phone<span>*</span></label>
                             <input type="text" id="phone" name="phone" value="{{old('phone')}}">
@@ -73,7 +68,8 @@
                             <div class="payment-check">
                                 <label for="payment">Payment Method</label>
                                 <select name="payment" class="form-select">
-                                    <option value="mod" selected="">MPesa on delivery</option>
+                                    <option value="mrn" selected="">Pay with MPesa</option>
+                                    <option value="mod" >MPesa on delivery</option>
                                     <option value="cod">Cash on delivery</option>
                                 </select>
                             </div>
@@ -93,7 +89,6 @@
 @section('extra-js')
 <script type="text/javascript">
     function submitForm(){
-        console.log(12345);
         document.getElementById('checkoutButton').disabled = true;
         document.getElementById('checkout').submit();
     }
