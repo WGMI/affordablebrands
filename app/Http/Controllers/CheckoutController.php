@@ -73,7 +73,20 @@ class CheckoutController extends Controller
             ]
         );
 
-        //Insert into orders
+        //Insert into 
+        
+        $amount = 0;
+
+        //Insert into order_product
+        foreach(Cart::content() as $item){
+            $amount += $item->price;
+            OrderProduct::create([
+                'order_id' => $order->id,
+                'product_id' => $item->model->id,
+                'quantity' => $item->qty
+            ]);
+        }
+        
         if($request->payment == 'mrn'){
             $mpesacontroller = new MpesaController();
             $mpesacontroller->express($request->phone);
@@ -90,18 +103,6 @@ class CheckoutController extends Controller
                 'payment' => $request->payment,
                 'type' => $type,
             ]);
-
-            $amount = 0;
-
-            //Insert into order_product
-            foreach(Cart::content() as $item){
-                $amount += $item->price;
-                OrderProduct::create([
-                    'order_id' => $order->id,
-                    'product_id' => $item->model->id,
-                    'quantity' => $item->qty
-                ]);
-            }
 
             Mail::to($order->email)->send(new OrderPlaced($order,$order->products(),$amount));
 
