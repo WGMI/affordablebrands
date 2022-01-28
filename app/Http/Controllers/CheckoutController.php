@@ -74,6 +74,19 @@ class CheckoutController extends Controller
         );
 
         //Insert into 
+
+        $type = (auth()->user()->role_id == 3) ? 'Wholesale' : 'Retail' ;
+        $order = Order::create([
+            'user_id' => auth()->user() ? auth()->user()->id : null,
+            'email' => $request->email,
+            'county' => $request->county,
+            'city' => $request->city,
+            'street' => $request->street,
+            'zip' => $request->zip,
+            'phone' => $request->phone,
+            'payment' => $request->payment,
+            'type' => $type,
+        ]);
         
         $amount = 0;
 
@@ -86,24 +99,11 @@ class CheckoutController extends Controller
                 'quantity' => $item->qty
             ]);
         }
-        
+
         if($request->payment == 'mrn'){
             $mpesacontroller = new MpesaController();
             $mpesacontroller->express($request->phone);
         }else{
-            $type = (auth()->user()->role_id == 3) ? 'Wholesale' : 'Retail' ;
-            $order = Order::create([
-                'user_id' => auth()->user() ? auth()->user()->id : null,
-                'email' => $request->email,
-                'county' => $request->county,
-                'city' => $request->city,
-                'street' => $request->street,
-                'zip' => $request->zip,
-                'phone' => $request->phone,
-                'payment' => $request->payment,
-                'type' => $type,
-            ]);
-
             Mail::to($order->email)->send(new OrderPlaced($order,$order->products(),$amount));
 
             //Decrease quntity of products in table
