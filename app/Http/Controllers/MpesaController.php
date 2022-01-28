@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\MpesaProcess;
 use App\MpesaTransaction;
 
@@ -66,10 +67,13 @@ class MpesaController extends Controller
         $error = curl_error($curl);
         curl_close($curl);
 
-        if ($error) {
-            return ['status' => 'error', 'data' => $error];
+        Log::info("Express process ends.");
 
+        if ($error) {
+            Log::info("Error in express process.");
+            return ['status' => 'error', 'data' => $error];
         } else {
+            Log::info("Successful express process.");
             $json = json_decode(json_decode($response));
 
             MpesaProcess::create([
