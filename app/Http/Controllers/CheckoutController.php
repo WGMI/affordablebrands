@@ -102,7 +102,7 @@ class CheckoutController extends Controller
 
         if($request->payment == 'mrn'){
             $mpesacontroller = new MpesaController();
-            $mpesacontroller->express($request->phone);
+            $mpesacontroller->express($request->phone,$amount);
         }else{
             Mail::to($order->email)->send(new OrderPlaced($order,$order->products(),$amount));
 
