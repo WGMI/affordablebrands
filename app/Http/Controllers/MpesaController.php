@@ -89,7 +89,7 @@ class MpesaController extends Controller
 
     public function callback(Request $request){
         $content = json_decode($request->getContent());
-        Log::info($content->TransactionType);
+        Log::info("Callback started.");
 
         $mpesa_transaction = new MpesaTransaction();
         $mpesa_transaction->TransactionType = $content->TransactionType;
