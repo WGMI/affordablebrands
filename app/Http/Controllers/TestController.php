@@ -74,6 +74,7 @@ class TestController extends Controller
 
     public function callback(){
         header("Content-Type: application/json");
+        Log::info("Callback begins");
 
         $response = '{
         "ResultCode": 0, 
