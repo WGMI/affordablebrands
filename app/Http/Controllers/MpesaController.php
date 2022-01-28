@@ -14,7 +14,7 @@ class MpesaController extends Controller
         $passKey = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";
         $callback = url("callback");
 
-        $phone_number = $number;
+        $phone_number = '254' . ltrim($number, $number[0]);
         $accountRef = "qikapu";
         $desc = "Qikapu payment";
         $amount = $amount_to_pay;
