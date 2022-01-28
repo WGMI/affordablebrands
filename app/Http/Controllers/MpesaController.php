@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\MpesaProcess;
+use App\MpesaProcess;
 
 class MpesaController extends Controller
 {
