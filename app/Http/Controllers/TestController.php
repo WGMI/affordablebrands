@@ -17,7 +17,7 @@ class TestController extends Controller
         $secret = "YxpQ7FTVXvP6AGN2";
         $businessCode = "174379";
         $passKey = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";
-        $callback = url("callback");
+        $callback = url("api/callback");
 
         $phone_number = "254708627024";
         $accountRef = "qikapu";
