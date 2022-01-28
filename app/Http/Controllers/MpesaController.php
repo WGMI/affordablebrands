@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\MpesaProcess;
+use App\MpesaTransaction;
 
 class MpesaController extends Controller
 {
