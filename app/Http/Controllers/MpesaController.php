@@ -45,7 +45,9 @@ class MpesaController extends Controller
                 'ConfirmationURL' => "https://qikapu.com/callback",
                 //'ValidationURL' => "https://qikapu.com/mpesa/callback"
             )));
-            return curl_exec($curl);
+            $response = json_encode(curl_exec($curl));
+            Log::info($response);
+            return $response;
         }
     }
 
