@@ -108,6 +108,11 @@ class MpesaController extends Controller
             $json = json_decode(json_decode($response));
             Log::info("Response: ".$response);
 
+            if(array_key_exists('errorMessage',$json)){
+                Log:error($json);
+                return;
+            }
+
             MpesaProcess::create([
                 'MerchantRequestID' => $json->MerchantRequestID,
                 'CheckoutRequestID' => $json->CheckoutRequestID
