@@ -52,6 +52,8 @@ class MpesaController extends Controller
     }
 
     public function express($number,$amount_to_pay){
+        $register = $this->registerUrls();
+    
         $key = "3NjcYEAA8rfBAoIOZRZrT8Nq35tenGc7";
         $secret = "YxpQ7FTVXvP6AGN2";
         $businessCode = "174379";
