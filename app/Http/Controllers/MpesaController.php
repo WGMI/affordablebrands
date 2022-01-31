@@ -109,7 +109,7 @@ class MpesaController extends Controller
             Log::info("Response: ".$response);
 
             if(array_key_exists('errorMessage',$json)){
-                Log:error($json);
+                Log::error($json);
                 return;
             }
 
