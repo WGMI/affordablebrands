@@ -15,6 +15,7 @@ use App\Http\Controllers\MpesaController;
 |
 */
 Route::post('callback',[MpesaController::class,'callback']);
+Route::post('validation',[MpesaController::class,'validation']);
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

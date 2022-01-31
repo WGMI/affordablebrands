@@ -43,7 +43,7 @@ class MpesaController extends Controller
                 'ShortCode' => "174379",
                 'ResponseType' => 'Completed',
                 'ConfirmationURL' => "https://qikapu.com/api/callback",
-                //'ValidationURL' => "https://qikapu.com/mpesa/callback"
+                'ValidationURL' => "https://qikapu.com/api/validation"
             )));
             $response = json_encode(curl_exec($curl));
             Log::info($response);
@@ -138,5 +138,9 @@ class MpesaController extends Controller
         $mpesa_transaction->MiddleName = $content->MiddleName;
         $mpesa_transaction->LastName = $content->LastName;
         $mpesa_transaction->save();
+    }
+
+    public function validation(Request $request){
+        Log::info('Validation: \n'.$request->all());
     }
 }
