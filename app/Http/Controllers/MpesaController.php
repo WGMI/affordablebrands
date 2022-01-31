@@ -12,11 +12,10 @@ class MpesaController extends Controller
     public function getToken(){
         $key = "3NjcYEAA8rfBAoIOZRZrT8Nq35tenGc7";
         $secret = "YxpQ7FTVXvP6AGN2";
-        
+
         $headers = ['Content-Type:application/json; charset=utf8'];
 
         $access_token_url = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials';
-        $initiate_url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
 
         $curl = curl_init($access_token_url);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
@@ -56,6 +55,7 @@ class MpesaController extends Controller
         $businessCode = "174379";
         $passKey = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";
         $callback = url("api/callback");
+        $initiate_url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
 
         Log::info($callback);
 
