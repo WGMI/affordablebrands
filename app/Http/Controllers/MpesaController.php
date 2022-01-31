@@ -76,8 +76,8 @@ class MpesaController extends Controller
             return ['status' => 'error', 'data' => $error];
         } else {
             Log::info("Successful express process.");
-            Log::info("Response: ".$json);
             $json = json_decode(json_decode($response));
+            Log::info("Response: ".$json);
 
             MpesaProcess::create([
                 'MerchantRequestID' => $json->MerchantRequestID,
