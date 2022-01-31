@@ -42,7 +42,7 @@ class MpesaController extends Controller
             curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode(array(
                 'ShortCode' => "174379",
                 'ResponseType' => 'Completed',
-                'ConfirmationURL' => "https://qikapu.com/callback",
+                'ConfirmationURL' => "https://qikapu.com/api/callback",
                 //'ValidationURL' => "https://qikapu.com/mpesa/callback"
             )));
             $response = json_encode(curl_exec($curl));
