@@ -9,22 +9,7 @@ use App\MpesaTransaction;
 
 class MpesaController extends Controller
 {
-    public function express($number,$amount_to_pay){
-        $key = "3NjcYEAA8rfBAoIOZRZrT8Nq35tenGc7";
-        $secret = "YxpQ7FTVXvP6AGN2";
-        $businessCode = "174379";
-        $passKey = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";
-        $callback = url("api/callback");
-
-        Log::info($callback);
-
-        $phone_number = '254' . ltrim($number, $number[0]);
-        $accountRef = "qikapu";
-        $desc = "Qikapu payment";
-        $amount = $amount_to_pay;
-        $timestamp = date('YmdHis');    
-        $password = base64_encode($businessCode.$passKey.$timestamp);
-
+    public function getToken(){
         $headers = ['Content-Type:application/json; charset=utf8'];
 
         $access_token_url = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials';
@@ -41,7 +26,44 @@ class MpesaController extends Controller
         $access_token = $result->access_token;  
         curl_close($curl);
 
-        $stkheader = ['Content-Type:application/json','Authorization:Bearer '.$access_token];
+        return $access_token;
+    }
+
+    public function registerUrls()
+    {
+        {
+            $curl = curl_init();
+            curl_setopt($curl, CURLOPT_URL, 'https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl');
+            curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json', 'Authorization: Bearer '.$this->getToken()));
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_POST, true);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode(array(
+                'ShortCode' => "174379",
+                'ResponseType' => 'Completed',
+                'ConfirmationURL' => "https://qikapu.com/callback",
+                //'ValidationURL' => "https://qikapu.com/mpesa/callback"
+            )));
+            return curl_exec($curl);
+        }
+    }
+
+    public function express($number,$amount_to_pay){
+        $key = "3NjcYEAA8rfBAoIOZRZrT8Nq35tenGc7";
+        $secret = "YxpQ7FTVXvP6AGN2";
+        $businessCode = "174379";
+        $passKey = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";
+        $callback = url("api/callback");
+
+        Log::info($callback);
+
+        $phone_number = '254' . ltrim($number, $number[0]);
+        $accountRef = "qikapu";
+        $desc = "Qikapu payment";
+        $amount = $amount_to_pay;
+        $timestamp = date('YmdHis');    
+        $password = base64_encode($businessCode.$passKey.$timestamp);
+
+        $stkheader = ['Content-Type:application/json','Authorization:Bearer '.$this->getToken()];
 
         $curl_post_data = array(
             'BusinessShortCode' => $businessCode,
