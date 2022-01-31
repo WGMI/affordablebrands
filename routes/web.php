@@ -63,4 +63,4 @@ Route::get('forcelogout',function(Request $request){
 
 Route::get('test',[TestController::class,'index']);
 //Route::get('callback',[MpesaController::class,'callback']);
-//Route::post('callback',[MpesaController::class,'callback']);
+Route::post('callback',[MpesaController::class,'callback']);
