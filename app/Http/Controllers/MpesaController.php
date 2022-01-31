@@ -10,6 +10,9 @@ use App\MpesaTransaction;
 class MpesaController extends Controller
 {
     public function getToken(){
+        $key = "3NjcYEAA8rfBAoIOZRZrT8Nq35tenGc7";
+        $secret = "YxpQ7FTVXvP6AGN2";
+        
         $headers = ['Content-Type:application/json; charset=utf8'];
 
         $access_token_url = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials';
