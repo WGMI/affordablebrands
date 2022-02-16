@@ -112,6 +112,32 @@
                         </ul>
                     </div>
 
+                    @if(session()->has('error'))
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Switch Failed</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Your outlet code is unverified. Please contact the administrator</p>
+                                        <p>Admin Number: +254 708 000 111</p>
+                                    </div>
+                                    @auth
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal" style="color:white;">OK</button>
+                                            <!-- <a type="button" class="btn btn-primary" href="#" style="color:white;">OK</a> -->
+                                        </div>
+                                    @endauth
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
