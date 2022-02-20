@@ -7,9 +7,9 @@
                             <a href="#">Affordable Brands</a>
                         </div>
                         <ul>
-                            <li>Address: Kampus Mall Jeevanjee Gardens Nairobi</li>
+                            <li>Address: Thika Town</li>
                             <li>Phone: +254701 111 222</li>
-                            <li>Email: info@affordablebrands.co.ke</li>
+                            <li>Email: info@qikapu.co.ke</li>
                         </ul>
                         <div class="footer-social">
                             <a href="#"><i class="fa fa-facebook"></i></a>

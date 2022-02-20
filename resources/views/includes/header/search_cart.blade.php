@@ -111,8 +111,7 @@
                             </li>
                         </ul>
                     </div>
-
-                    @if(session()->has('error'))
+                    @if(Auth::user()->outlet_code == null)
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -136,32 +135,31 @@
                                 </div>
                             </div>
                         </div>
-                    @endif
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Change User Type</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
+                    @else
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Change User Type</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        @auth
+                                            <p>You are currently logged in as a {{auth()->user()->role->name}}</p>
+                                        @endauth
+                                    </div>
                                     @auth
-                                        <p>You are currently logged in as a {{auth()->user()->role->name}}</p>
+                                        <div class="modal-footer">
+                                            <a type="button" class="btn btn-primary" href="{{ route('switchuser', ['id' => auth()->user()->id]) }}" style="color:white;">Switch to {{auth()->user()->role->name == 'Regular User' ? 'Wholesaler' : 'Regular User'}}</a>
+                                        </div>
                                     @endauth
                                 </div>
-                                @auth
-                                    <div class="modal-footer">
-                                        <a type="button" class="btn btn-primary" href="{{ route('switchuser', ['id' => auth()->user()->id]) }}" style="color:white;">Switch to {{auth()->user()->role->name == 'Regular User' ? 'Wholesaler' : 'Regular User'}}</a>
-                                    </div>
-                                @endauth
                             </div>
-                        </div>
-                    </div>
-
+                        </div>     
+                    @endif
                 </div>
             </div>
         </div>
