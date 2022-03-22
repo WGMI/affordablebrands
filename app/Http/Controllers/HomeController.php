@@ -35,9 +35,13 @@ class HomeController extends Controller
 
     public function switchuser(Request $request){
         $user = User::find($request->id);
-        $user->role_id = ($user->role_id == 2) ? 3 : 2;
-        $user->save();
-        //$user = 
-        return redirect()->back();
+        if($user->outlet_code == null){
+            return redirect()->back()->with('error','fail');
+        }else{
+            $user->role_id = ($user->role_id == 2) ? 3 : 2;
+            $user->save();
+            //$user = 
+            return redirect()->back();
+        }
     }
 }

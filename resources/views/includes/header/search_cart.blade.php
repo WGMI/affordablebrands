@@ -111,31 +111,55 @@
                             </li>
                         </ul>
                     </div>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Change User Type</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
+                    @if(Auth::user()->outlet_code == null)
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Switch Failed</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Your outlet code is unverified. Please contact the administrator</p>
+                                        <p>Admin Number: +254 708 000 111</p>
+                                    </div>
                                     @auth
-                                        <p>You are currently logged in as a {{auth()->user()->role->name}}</p>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal" style="color:white;">OK</button>
+                                            <!-- <a type="button" class="btn btn-primary" href="#" style="color:white;">OK</a> -->
+                                        </div>
                                     @endauth
                                 </div>
-                                @auth
-                                    <div class="modal-footer">
-                                        <a type="button" class="btn btn-primary" href="{{ route('switchuser', ['id' => auth()->user()->id]) }}" style="color:white;">Switch to {{auth()->user()->role->name == 'Regular User' ? 'Wholesaler' : 'Regular User'}}</a>
-                                    </div>
-                                @endauth
                             </div>
                         </div>
-                    </div>
-
+                    @else
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Change User Type</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        @auth
+                                            <p>You are currently logged in as a {{auth()->user()->role->name}}</p>
+                                        @endauth
+                                    </div>
+                                    @auth
+                                        <div class="modal-footer">
+                                            <a type="button" class="btn btn-primary" href="{{ route('switchuser', ['id' => auth()->user()->id]) }}" style="color:white;">Switch to {{auth()->user()->role->name == 'Regular User' ? 'Wholesaler' : 'Regular User'}}</a>
+                                        </div>
+                                    @endauth
+                                </div>
+                            </div>
+                        </div>     
+                    @endif
                 </div>
             </div>
         </div>
