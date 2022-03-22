@@ -1041,6 +1041,7 @@ ol {
 .prod_img {
 	height: 330px;
 	width: 270px;
+	object-fit:cover;
 }
 
 .product-large {
