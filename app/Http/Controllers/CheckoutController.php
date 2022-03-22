@@ -10,6 +10,7 @@ use App\Order;
 use App\OrderProduct;
 use App\Product;
 use App\Mail\OrderPlaced;
+use Carbon\Carbon;
 
 class CheckoutController extends Controller
 {
@@ -47,6 +48,44 @@ class CheckoutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function mpesaRegisterUrls()
+    {
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, 'https://api.safaricom.co.ke/mpesa/c2b/v1/registerurl');
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json','Authorization: Bearer '. $this->generateAccessToken()));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode(array(
+            'ShortCode' => env("SHORTCODE"),
+            'ResponseType' => 'Completed',
+            'ConfirmationURL' => "http://134.122.105.210/confirmation.php",
+            'ValidationURL' => "http://134.122.105.210/validation.php"
+        )));
+        $curl_response = curl_exec($curl);
+        echo $curl_response;
+    }
+
+        public function generateAccessToken()
+    {
+        $consumer_key=env("MPESA_CONSUMER_KEY");
+        $consumer_secret=env("MPESA_CONSUMER_SECRET");
+        $credentials = base64_encode($consumer_key.":".$consumer_secret);
+        $url = 'https://api.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials';
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        $credentials = base64_encode($consumer_key.':'.$consumer_secret);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Authorization: Basic '.$credentials)); //setting a custom header
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+        $curl_response = curl_exec($curl);
+
+        return json_decode($curl_response)->access_token;
+    }
+
     public function store(Request $request)
     {
         //Ensure items are still available
@@ -66,7 +105,7 @@ class CheckoutController extends Controller
             'county'=>'required',
             'city'=>'required',
             'street'=>'required',
-            'phone'=>'required | digits:10 | regex:/(07)[0-9]{8}/'
+            //'phone'=>'required | digits:10 | regex:/(07)[0-9]{8}/'
         ],
             [
                 'email.unique' => 'An account with this email exists. Please sign in if it is yours.'
@@ -89,7 +128,7 @@ class CheckoutController extends Controller
         ]);
         
         $amount = 0;
-
+        
         //Insert into order_product
         foreach(Cart::content() as $item){
             $amount += $item->price;
@@ -101,8 +140,78 @@ class CheckoutController extends Controller
         }
 
         if($request->payment == 'mrn'){
-            $mpesacontroller = new MpesaController();
-            $mpesacontroller->express($request->phone,$amount);
+            //return $this->mpesaRegisterUrls();
+            //return $this->generateAccessToken();
+
+
+            
+                    $LipaNaMpesaPasskey = env("PASSKEY");
+                    $BusinessShortCode = env("SHORTCODE");
+                    $PartyB = env("SHORTCODE");
+               
+                
+                
+                
+                
+               //$PartyB = 5483375;
+               $lipa_time = Carbon::rawParse('now')->format('YmdHms');
+                $Amount =$amount;
+                $PartyA = $request->phone;
+                
+                $TransactionType = 'CustomerPayBillOnline';
+                
+                if(!empty($request->input('accountnumber'))){
+                     $accountref = $request->input('accountnumber'); 
+                }else{
+                     $accountref = 0 ;
+                }
+               
+                
+                $PhoneNumber = $request->phone;
+                //return $PhoneNumber;
+                $CallBackURL = "http://134.122.105.210/callback.php";
+                $AccountReference = $accountref;
+                $TransactionDesc ='success';
+                $Remarks = 'Payment to account';
+                $timestamp='20'.date(    "ymdhis");
+                $Msisdn ="254708374149";
+                
+                $password=base64_encode($BusinessShortCode.$LipaNaMpesaPasskey.$timestamp);
+               
+                try {
+                    //$mpesa= new \Safaricom\Mpesa\Mpesa();
+                        $mpesa= new \Safaricom\Mpesa\Mpesa();
+                    //return $stkPushSimulation=;
+                    $mpesa->STKPushSimulation($BusinessShortCode, $LipaNaMpesaPasskey, $TransactionType, $Amount, $PartyA, $PartyB, $PhoneNumber, $CallBackURL, $AccountReference, $TransactionDesc, $Remarks);
+                    //return $stkPushSimulation;
+                    $data       = array(
+                        'status' => 200,
+                        'message' => 'Unlock Your Phone Then Proceed To Make Payments',
+                        'state' => 'success'
+                    );
+                    //header("Content-type: application/json");
+                    //echo json_encode($data);
+                    //Mail::to($order->email)->send(new OrderPlaced($order,$order->products(),$amount));
+                    $this->decreaseQuantities();
+
+                    Cart::instance('default')->destroy();
+                    return view('thankyou');
+                } catch (\Exception $e) {
+                    //return report($e);
+                    $data       = array(
+                        'status' => 400,
+                        'message' => $e->getMessage(),
+                        'state' => 'error'
+                    );
+                    header("Content-type: application/json");
+                   // echo json_encode($data);
+                
+                    //exit();
+                }
+
+
+            //$mpesacontroller = new MpesaController();
+            //$mpesacontroller->express($request->phone,$amount);
         }else{
             Mail::to($order->email)->send(new OrderPlaced($order,$order->products(),$amount));
 

@@ -11,6 +11,9 @@
                         {{session()->get('error')}}
                     </div>
                 @endif
+                @if($errors->any())
+                    {!! implode('', $errors->all('<div class="alert alert-danger">:message</div>')) !!}
+                @endif
             <div class="row">
                 <div class="col-lg-6">
                     <h4>Billing</h4>
@@ -48,7 +51,7 @@
                             <p style="color: red">@error('street') {{$message}} @enderror</p>
                         </div>
                         <div class="col-lg-6">
-                            <label for="phone">Phone<span>*</span></label>
+                            <label for="phone">Phone<span>*Begin with 254</span></label>
                             <input type="text" id="phone" name="phone" value="{{old('phone')}}">
                             <p style="color: red">@error('phone') {{$message}} @enderror</p>
                         </div>

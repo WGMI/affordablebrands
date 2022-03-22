@@ -40,7 +40,8 @@ class CartController extends Controller
         if($request->qty > $request->productqty){
             return redirect()->back()->with('error','Only '.$request->productqty.' unit(s) remaining.');
         } else{
-            Cart::add($request->id, $request->name, $request->qty, $request->price)->associate('App\Product');
+            $product = Product::find($request->id);
+            Cart::add($request->id, $request->name, $request->qty, $product->price)->associate('App\Product');
             if($request->route()->uri == 'cartsingle'){
                 return redirect()->back()->with('success','Item added to cart!');
             } else{
