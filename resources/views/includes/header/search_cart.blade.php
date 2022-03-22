@@ -111,6 +111,7 @@
                             </li>
                         </ul>
                     </div>
+                    @auth
                     @if(Auth::user()->outlet_code == null)
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -160,6 +161,7 @@
                             </div>
                         </div>     
                     @endif
+                    @endauth
                 </div>
             </div>
         </div>
