@@ -1039,7 +1039,7 @@ ol {
 }
 
 .prod_img {
-	height: 330px;
+	height: auto;
 	width: 270px;
 	object-fit:cover;
 }

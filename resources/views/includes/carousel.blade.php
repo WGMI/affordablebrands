@@ -1,6 +1,6 @@
 <section class="hero-section">
         <div class="hero-items owl-carousel">
-            <div class="single-hero-items set-bg" data-setbg="img/hero.jpg">
+            <div class="single-hero-items set-bg" data-setbg="img/hero01.jpeg">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
@@ -16,7 +16,7 @@
                     </div> -->
                 </div>
             </div>
-            <div class="single-hero-items set-bg" data-setbg="img/hero2.jpg">
+            <div class="single-hero-items set-bg" data-setbg="img/hero02.jpeg">
                 <div class="container">
                     <div class="row">
                         <!-- <div class="col-lg-5">
@@ -32,7 +32,7 @@
                     </div> -->
                 </div>
             </div>
-            <div class="single-hero-items set-bg" data-setbg="img/hero-1.jpg">
+            <div class="single-hero-items set-bg" data-setbg="img/hero03.jpeg">
                 <div class="container">
                     <div class="row">
                         <!-- <div class="col-lg-5">
