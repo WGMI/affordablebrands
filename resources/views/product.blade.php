@@ -122,6 +122,7 @@
                                     <a href="#" class="primary-btn pd-cart" onclick="event.preventDefault(); ajaxProdCall({{$product->id}})">Add To Cart</a>
                                     @endif
                                 </div>
+                                <a href="#" class="primary-btn pd-cart" onclick="event.preventDefault(); ajaxQuickProdCall({{$product->id}})">Quick Purchase</a>
                                 @if(session()->has('error'))
                                     <div class="alert alert-danger">
                                         {{session()->get('error')}}

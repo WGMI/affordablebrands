@@ -1284,6 +1284,11 @@ ol {
 	text-decoration: line-through;
 }
 
+.strike {
+	font-size: 15px;
+	text-decoration: line-through;
+}
+
 /*---------------------
   Deal Of The Week
 -----------------------*/

@@ -39,3 +39,10 @@ function ajaxProdCall(a){
   var form = document.getElementById('prd'+a);
   form.submit();
 }
+
+function ajaxQuickProdCall(a){
+  console.log(a);
+  var form = document.getElementById('prd'+a);
+  form.submit();
+  window.location.href = '/checkout';
+}

@@ -52,6 +52,16 @@
             </a>
         @endauth
         @auth
+            @if($p->original_price && auth()->user()->role_id == 2)
+            <div class="strike">
+                {{auth()->user()->role_id == 2 ? presentPrice($p->original_price) : presentPrice($p->original_case_price)}}
+            </div>
+            @endif
+            @if($p->original_case_price && auth()->user()->role_id == 3)
+            <div class="strike">
+                {{auth()->user()->role_id == 2 ? presentPrice($p->original_price) : presentPrice($p->original_case_price)}}
+            </div>
+            @endif
             <div class="product-price">
                 {{auth()->user()->role_id == 2 ? presentPrice($p->price) : presentPrice($p->list_price_per_case)}}
             </div>
