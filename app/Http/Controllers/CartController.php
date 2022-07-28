@@ -43,7 +43,11 @@ class CartController extends Controller
             $product = Product::find($request->id);
             Cart::add($request->id, $request->name, $request->qty, $product->price)->associate('App\Product');
             if($request->route()->uri == 'cartsingle'){
-                return redirect()->back()->with('success','Item added to cart!');
+                if($request->quick){
+                    return redirect('checkout');
+                } else{
+                    return redirect()->back()->with('success','Item added to cart!');
+                } 
             } else{
                 return null;
             }

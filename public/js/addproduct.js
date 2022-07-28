@@ -43,6 +43,10 @@ function ajaxProdCall(a){
 function ajaxQuickProdCall(a){
   console.log(a);
   var form = document.getElementById('prd'+a);
+  var quick = document.createElement('input');
+  quick.setAttribute('type','hidden');
+  quick.setAttribute('value','1');
+  quick.setAttribute('name','quick');
+  form.appendChild(quick);
   form.submit();
-  window.location.href = '/checkout';
 }
