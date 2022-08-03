@@ -139,6 +139,9 @@ class CheckoutController extends Controller
             ]);
         }
 
+        $order->amount = $amount;
+        $order->save();
+
         if($request->payment == 'mrn'){
             //return $this->mpesaRegisterUrls();
             //return $this->generateAccessToken();

@@ -56,12 +56,13 @@
                             <div class="dropdown">
                                 <a class="dropbtn">Welcome, {{Auth::user()->name}}</a>
                                     <div class="dropdown-content">
-                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                                         @if(auth()->user()->role_id == 1)
                                             <a class="dropdown-item" href="{{ url('admin') }}">Admin</a>
                                         @else
                                         <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal">Change User Type</a>
                                         @endif
+                                        <a class="dropdown-item" href="{{route('orders')}}">Orders</a>
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                             @csrf
                                         </form>

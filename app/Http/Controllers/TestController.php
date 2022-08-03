@@ -13,6 +13,13 @@ use Cart;
 class TestController extends Controller
 {
     public function index(){
+        $o = auth()->user()->orders;
+        foreach($o as $os){
+            echo $os->products;
+        }
+    }
+
+    public function testmpesa(){
     	$key = "3NjcYEAA8rfBAoIOZRZrT8Nq35tenGc7";
         $secret = "YxpQ7FTVXvP6AGN2";
         $businessCode = "174379";

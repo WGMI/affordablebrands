@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\MpesaController;
 use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
@@ -35,6 +36,7 @@ Route::get('/guestcheckout',[CheckoutController::class,'index']);
 Route::get('search',[ShopController::class,'search'])->name('search');
 Route::post('subcategories',[ShopController::class,'getsubcategories'])->middleware('admin.user');
 Route::get('switchuser',[HomeController::class,'switchuser'])->name('switchuser');
+Route::get('orders',[OrderController::class,'index'])->name('orders');
 
 Route::get('forgot', function () {
     return view('auth.passwords.reset');
