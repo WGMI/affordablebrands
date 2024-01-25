@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class TempController extends Controller
 {
-    public function TempController(Request $request){
+    public function sendEmail(Request $request){
         $recipientName = $request->name; // Replace with the recipient's name
 
         Mail::to($request->email)->send(new MilletQuestEmail($recipientName));
