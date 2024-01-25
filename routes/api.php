@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MpesaController;
+use App\Http\Controllers\TempController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,5 @@ Route::post('validation',[MpesaController::class,'validation']);
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('email',[TempController::class,'sendEmail']);

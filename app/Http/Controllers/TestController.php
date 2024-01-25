@@ -13,6 +13,8 @@ use Cart;
 class TestController extends Controller
 {
     public function index(){
+        $recipientName = 'Test';
+        return view('emails.millet_quest_email',compact('recipientName'));
         $o = auth()->user()->orders;
         foreach($o as $os){
             echo $os->products;
