@@ -17,15 +17,19 @@
     <div style="padding: 20px;">
         <p>Dear {{ $recipientName }},</p>
 
-        <p>Thank you for registering and signing up for The Great Millet Quest Innovation Challenge! We're excited to have you on board for this journey.</p>
-
-        <p>By taking this step, you're now one step closer to the chance of winning an incredible <strong>500,000 Shillings</strong>!</p>
-
-        <p>Please keep an eye on your email inbox as we'll be sending you more information about the competition soon. Be sure to check your junk folder just in case. We wouldn't want you to miss any important updates or details that could enhance your experience and increase your chances of winning.</p>
-
-        <p>Once again, thank you for joining us on this exciting journey. Best of luck in the upcoming competition! This is the First Step To Creating A Brighter Future with Millet!</p>
-
-        <p style="color: #4CAF50;">Warm regards,<br>The Great Millet Quest Team</p>
+        <p>Thank you for your enthusiastic registration in the Great Millet Quest! We're thrilled to have you on board for this exciting journey.</p>
+    <p><strong>Now that you've registered, it's time to gear up for the quest ahead. Here are the next steps:</strong></p>
+    <ol>
+        <li><strong>Stay Tuned:</strong> Keep an eye on your inbox for further updates and important announcements regarding the Great Millet quest. We'll be sharing valuable information to help you prepare and make the most of your participation.</li>
+        <li><strong>Preparation:</strong> Take some time to familiarize yourself with millet and its various uses, benefits, and innovation possibilities. Whether you're a seasoned millet aficionado or new to its wonders, exploring its versatility will enhance your idea submission. Kindly log on to <a href="www.greatmilletquest.com">www.greatmilletquest.com</a> today to discover more about the Great Millet Quest.</li>
+        <li><strong>Connect:</strong> Join our community forum at the University of Nairobi - Upper Kabete Campus that is dedicated to the Great Millet Quest. Here, you can connect with fellow participants, share insights, tips & foster a sense of camaraderie as you begin working on your innovative millet idea. You can also visit <a href="www.greatmilletquest.com">www.greatmilletquest.com</a> for more information on Millet.</li>
+        <li><strong>Mark Your Calendar:</strong> Save the dates for any upcoming events, workshops, or webinars related to the Great Millet Quest. These sessions will offer invaluable guidance, inspiration, and opportunities to interact with innovation experts and fellow enthusiasts.</li>
+        <li><strong>Spread the Word:</strong> Help us spread the word about the Great Millet Quest to other participants. You can also follow us on Instagram - @greatmilletquest on X - @GMilletQuest & on Facebook - The Great Millet Quest.</li>
+    </ol>
+    <p>We're thrilled to have you as part of our community and can't wait to see your innovative ideas.</p>
+    <p><strong>Remember – the top idea at the end of the Quest will win KES 500,000. The 2nd best idea – KES 200,000 & the third best idea – 100,000.</strong></p>
+    <p>If you have any questions or need assistance at any point, don't hesitate to reach out to us by replying to this e-mail & we will be quick to respond.</p>
+    <p>Warm regards,<br>The Great Millet Quest Committee</p>
     </div>
 
     <div style="background-color: #f4f4f4; padding: 10px; text-align: center;">
