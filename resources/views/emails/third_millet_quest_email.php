@@ -24,7 +24,7 @@
         <p>Submitting your ideas is easy:</p>
         <ol>
             <li><strong>Prepare Your Submission:</strong> Take some time to fine-tune your millet innovation. Ensure your idea is clear, concise, and showcases the unique qualities and potential of millet.</li>
-            <li><strong>Submit Your Idea:</strong> Head over to our submission portal on <a href="www.greatmilletquest.com">greatmilletquest.com</a>, where you can upload your innovative millet concept. Don't forget to provide any relevant details, such as ingredients, materials, or methods involved.</li>
+            <li><strong>Submit Your Idea:</strong> Head over to our submission portal on <a href="www.greatmilletquest.com">greatmilletquest.com</a>, where you can upload your innovative millet concept. Don't forget to provide any relevant details, such as ingredients, materials, or methods involved. Make sure you register as a user if you haven't already. You can do this by clicking Discover More on the homepage. From the Discover More page you can create an account or sign in to yours.</li>
             <li><strong>Share Your Passion:</strong> Along with your submission, feel free to share the story behind your millet innovation. What inspired you? How do you envision your idea making a positive impact?</li>
             <li><strong>Stay Engaged:</strong> Keep an eye on your inbox for updates regarding the evaluation process. We'll keep you informed every step of the way.</li>
         </ol>
