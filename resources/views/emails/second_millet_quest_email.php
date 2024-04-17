@@ -15,7 +15,7 @@
     </div>
 
     <div style="padding: 20px;">
-        <p>Dear {{ $recipientName }},</p>
+        <p>Hello,</p>
 
         <p>Thank you for your enthusiastic registration in the Great Millet Quest! We're thrilled to have you on board for this exciting journey.</p>
     <p><strong>Now that you've registered, it's time to gear up for the quest ahead. Here are the next steps:</strong></p>
