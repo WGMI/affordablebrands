@@ -20,7 +20,7 @@ class MLTEmail extends Mailable
 
     public function build()
     {
-        return $this->subject('The 500K Prize Could Be Yours To Win')
-                    ->view('emails.millet_quest_email');
+        return $this->subject('GET READY TO WIN KES 500,000 IN THE GREAT MILLET QUEST CONTEST')
+                    ->view('emails.second_millet_quest_email');
     }
 }
