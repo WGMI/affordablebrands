@@ -15,7 +15,7 @@
     </div>
 
     <div style="padding: 20px;">
-        <p>Dear {{ $recipientName }},</p>
+        <p>Hello,</p>
 
         <p>We hope this message finds you well and filled with excitement for the Great Millet Quest!</p>
         <p>As the quest unfolds, we're eager to witness the creativity and ingenuity of our participants. That's why we're reaching out to encourage you to start submitting your innovative millet ideas. We will have a training this week guiding you on how to package and present the winning idea.</p>
