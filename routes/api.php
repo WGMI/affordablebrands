@@ -22,3 +22,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('email',[TempController::class,'sendEmail']);
+Route::post('sendemail',[TempController::class,'sendSecondEmail']);
