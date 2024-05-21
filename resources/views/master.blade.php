@@ -10,6 +10,7 @@
 	<meta name="author" content="">
     <title>@yield('title')Qikapu</title>
 
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<link rel="shortcut icon" href="{{asset('images/favicon.png')}}">
 	<link href="{{asset('libraries/bootstrap/bootstrap.min.css')}}" rel="stylesheet" />
 	<link rel="stylesheet" href="{{asset('libraries/fuelux/jquery-ui.min.css')}}">
@@ -57,6 +58,8 @@
 	@include('includes.head')
 
 	@yield('content')
+	
+    @yield('extra-js')
 
 	@include('includes.footer')
 </body>

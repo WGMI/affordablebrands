@@ -1,57 +1,135 @@
 @extends('master')
 @section('content')
 
-<!-- Product Shop Section Begin -->
-<section class="product-shop spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
-                <div class="filter-widget">
-                    @if(!isset($categoryName))
-                        <h4 class="fw-title">Categories</h4>
-                        <ul class="filter-catagories">
-                            @include('includes.partials.categories')
-                        </ul>
-                    @else
-                        <h4 class="fw-title">{{$categoryName}}</h4>
-                        <ul class="filter-catagories">
-                            @include('includes.partials.subcategories')
-                        </ul>
-                    @endif
-                </div>
-            </div>
-            <div class="col-lg-9 order-1 order-lg-2">
-                <div class="product-show-option">
-                    <div class="row">
-                        <div class="col-lg-7 col-md-7">
-                            Sort: <a href="{{route('shop.index',['category'=>request()->category,'sort'=>'asc'])}}">Low to high</a> | <a href="{{route('shop.index',['category'=>request()->category,'sort'=>'desc'])}}">High to low</a>
-                        </div>
-                    </div>
-                </div>
-                {!!$categoryName ? '<h4 class="fw-title">'.$categoryName.'</h4><br>':''!!}
-                <div class="product-list">
-                    <div class="row">
-                        @forelse($products as $p)
-                            <div class="col-lg-4 col-sm-6">
-                                @include('includes.partials.singleproduct')
-                            </div> 
-                        @empty
-                            <div class="col-lg-4 col-sm-6">
-                                <h3>No items in this category</h3>
-                                <br><br>
-                                <h4>Please check back later</h4>
-                                <br><br><br><br><br>
-                            </div> 
-                        @endforelse
-                    </div>
-                    {{$products->appends(request()->input())->links('vendor.pagination.custom')}}
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Product Shop Section End -->
-	
+<div class="container">
+	<!-- Feature Product -->
+	<div id="featured-products" class="featured-products bottom-shadow">
+		<!-- container -->
+		<div class="container">
+			<div class="category-box-main product-box-main">
+				<div class="row">
+                    @forelse($products as $p)
+                        @include('includes.partials.singleproduct')
+                    @empty
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                            <h3>No items</h3>
+                            <br><br>
+                            <h4>Please check back later</h4>
+                            <br><br><br><br><br>
+                        </div> 
+                    @endforelse
+					<div class="col-12 col-sm-6 col-md-6 col-lg-3 main-product" style="visibility: hidden">
+						<div class="category-box product-box">
+							<span class="sale">sales</span>
+							<div class="inner-product">
+								<img src="images/featured/featured-1.jpg" alt="featured-img" />
+								<div class="product-box-inner">
+									<ul>
+										<li><a title="Eye Icon" href="images/featured/featured-1.jpg"><i
+													class="fa fa-eye"></i></a></li>
+										<li><a title="Heart Icon" href="#"><i class="fa fa-heart"></i></a></li>
+									</ul>
+									<a title="Add to cart" href="#" class="btn">add to cart</a>
+								</div>
+							</div>
+						</div>
+						<a title="Fashionable Pink Top" href="#" class="product-title">Bodycon Dress</a>
+						<ul class="star">
+							<li>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star-o"></i>
+								<i class="fa fa-star-o"></i>
+							</li>
+						</ul>
+						<span class="amount"><del>&dollar;24.99</del> &dollar;19.99</span>
+					</div>
+					<div class="col-12 col-sm-6 col-md-6 col-lg-3 main-product" style="visibility: hidden">
+						<div class="category-box product-box">
+							<span class="sale">sales</span>
+							<div class="inner-product">
+								<img src="images/featured/featured-1.jpg" alt="featured-img" />
+								<div class="product-box-inner">
+									<ul>
+										<li><a title="Eye Icon" href="images/featured/featured-1.jpg"><i
+													class="fa fa-eye"></i></a></li>
+										<li><a title="Heart Icon" href="#"><i class="fa fa-heart"></i></a></li>
+									</ul>
+									<a title="Add to cart" href="#" class="btn">add to cart</a>
+								</div>
+							</div>
+						</div>
+						<a title="Fashionable Pink Top" href="#" class="product-title">Bodycon Dress</a>
+						<ul class="star">
+							<li>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star-o"></i>
+								<i class="fa fa-star-o"></i>
+							</li>
+						</ul>
+						<span class="amount"><del>&dollar;24.99</del> &dollar;19.99</span>
+					</div>
+					<div class="col-12 col-sm-6 col-md-6 col-lg-3 main-product" style="visibility: hidden">
+						<div class="category-box product-box">
+							<span class="sale">sales</span>
+							<div class="inner-product">
+								<img src="images/featured/featured-1.jpg" alt="featured-img" />
+								<div class="product-box-inner">
+									<ul>
+										<li><a title="Eye Icon" href="images/featured/featured-1.jpg"><i
+													class="fa fa-eye"></i></a></li>
+										<li><a title="Heart Icon" href="#"><i class="fa fa-heart"></i></a></li>
+									</ul>
+									<a title="Add to cart" href="#" class="btn">add to cart</a>
+								</div>
+							</div>
+						</div>
+						<a title="Fashionable Pink Top" href="#" class="product-title">Bodycon Dress</a>
+						<ul class="star">
+							<li>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star-o"></i>
+								<i class="fa fa-star-o"></i>
+							</li>
+						</ul>
+						<span class="amount"><del>&dollar;24.99</del> &dollar;19.99</span>
+					</div>
+					<div class="col-12 col-sm-6 col-md-6 col-lg-3 main-product" style="visibility: hidden">
+						<div class="category-box product-box">
+							<span class="sale">sales</span>
+							<div class="inner-product">
+								<img src="images/featured/featured-1.jpg" alt="featured-img" />
+								<div class="product-box-inner">
+									<ul>
+										<li><a title="Eye Icon" href="images/featured/featured-1.jpg"><i
+													class="fa fa-eye"></i></a></li>
+										<li><a title="Heart Icon" href="#"><i class="fa fa-heart"></i></a></li>
+									</ul>
+									<a title="Add to cart" href="#" class="btn">add to cart</a>
+								</div>
+							</div>
+						</div>
+						<a title="Fashionable Pink Top" href="#" class="product-title">Bodycon Dress</a>
+						<ul class="star">
+							<li>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star-o"></i>
+								<i class="fa fa-star-o"></i>
+							</li>
+						</ul>
+						<span class="amount"><del>&dollar;24.99</del> &dollar;19.99</span>
+					</div>
+				</div>
+			</div>
+		</div><!-- container /- -->
+	</div>
 @endsection
 @section('extra-js')
   <script type="text/javascript" src="{{URL::asset('js/addproduct.js')}}"/>

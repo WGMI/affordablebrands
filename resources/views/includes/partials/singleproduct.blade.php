@@ -1,27 +1,21 @@
-<div class="product-item">
-    <div class="pi-pic">
-        <a href="{{route('shop.show',$p->slug)}}"><img class="prod_img" src="{{productImage($p->image)}}" alt=""></a>
-        <input type="hidden" value="{{route('cart.post')}}" id="postroute"/>
-        <!--<div class="sale" id="addedmsg{{$p->id}}" style="display: none"></div>-->
-        <span id="addedmsg{{$p->id}}" class="badge badge-success added"></span>
-        <ul>
-            <li class="quick-view">
+<div class="col-12 col-sm-6 col-md-6 col-lg-3 main-product">
+    <div class="category-box product-box">
+        <div class="inner-product">
+            <a href="{{route('shop.show',$p->slug)}}">
+                <img src="{{productImage($p->image)}}" alt="featured-img" style="max-height: 292px; max-width: 292px; object-fit:contain;"/>
+            </a>
+            <input type="hidden" value="{{route('cart.post')}}" id="postroute"/>
+            <span id="addedmsg{{$p->id}}" class="badge badge-success added"></span>
+            <div class="product-box-inner">
                 @if($p->quantity > 0)
                     @if(Request::is('shop'))
-                        <a class="link" href="#" onclick="event.preventDefault(); ajaxCall({{$p->id}});">
-                            + Add To Cart
-                        </a>
+                        <a class="btn" href="#" onclick="event.preventDefault(); ajaxCall({{$p->id}});">+ Add To Cart</a>
                     @else
-                        <a class="link" href="{{route('shop.show',$p->slug)}}">
-                            + View Item
-                        </a>
+                        <a class="btn" href="{{route('shop.show',$p->slug)}}">+ View Item</a>
                     @endif
                 @else
-                <a class="link" href="{{route('shop.show',$p->slug)}}">
-                    - Out of stock
-                </a>
+                    <a class="link" href="{{route('shop.show',$p->slug)}}">- Out of stock</a>
                 @endif
-
                 <form action="{{url('/cart')}}" method="POST" id="prd{{$p->id}}"> 
                     @csrf
                     <input type="hidden" name="id" value="{{$p->id}}">
@@ -36,39 +30,9 @@
                     <input type="hidden" value="1" name="qty">
                     <input type="hidden" name="productqty" value="{{$p->quantity}}">
                 </form>
-            </li>
-            <!--<li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>-->
-        </ul>
+            </div>
+        </div>
     </div>
-    <div class="pi-text">
-        <!-- <div class="catagory-name">Electronics</div> -->
-        @auth
-            <a href="{{route('shop.show',$p->slug)}}">
-                <h5>{{$p->name}}</h5>
-                @if(auth()->user()->role_id == 3)
-                <p>Batch of {{$p->units_per_case}}</p>
-                @endif
-            </a>
-        @endauth
-        @auth
-            @if($p->original_price && auth()->user()->role_id == 2)
-            <div class="strike">
-                {{auth()->user()->role_id == 2 ? presentPrice($p->original_price) : presentPrice($p->original_case_price)}}
-            </div>
-            @endif
-            @if($p->original_case_price && auth()->user()->role_id == 3)
-            <div class="strike">
-                {{auth()->user()->role_id == 2 ? presentPrice($p->original_price) : presentPrice($p->original_case_price)}}
-            </div>
-            @endif
-            <div class="product-price">
-                {{auth()->user()->role_id == 2 ? presentPrice($p->price) : presentPrice($p->list_price_per_case)}}
-            </div>
-        @else
-            <div class="product-price">
-                {{presentPrice($p->price)}}
-            </div>
-        @endauth
-    </div>
+    <a title="{{$p->name}}" href="{{route('shop.show',$p->slug)}}" class="product-title">{{$p->name}}</a>
+    <span class="amount">{{presentPrice($p->price)}}</span>
 </div>
