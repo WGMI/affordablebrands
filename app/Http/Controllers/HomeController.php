@@ -18,19 +18,8 @@ class HomeController extends Controller
     
     public function index()
     {
-        $cat1 = 'Detergents';
-        $cat2 = 'Spices';
-        $cat3 = 'Health & Beauty';
-        $products = Product::with('categories')->whereHas('categories',function($query){
-            $query->where('name','Detergents')->where([['featured',true],['available',1]]);
-        })->get();
-        $section2 = Product::with('categories')->whereHas('categories',function($query){
-            $query->where('name','Spices')->where([['featured',true],['available',1]]);
-        })->get();
-        $section3 = Product::with('categories')->whereHas('categories',function($query){
-            $query->where('name','Health & Beauty')->where([['featured',true],['available',1]]);
-        })->get();
-        return view('index')->with(['products' => $products,'section2' => $section2,'section3' => $section3,'category' => $cat1]);
+        $featured = Product::all()->take(8);
+        return view('index')->with(['products' => $featured]);
     }
 
     public function switchuser(Request $request){
