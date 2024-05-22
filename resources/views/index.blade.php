@@ -76,12 +76,12 @@
 			</div><!-- Section Header /- -->
 
 			<div class="category-box-main product-box-main row">
-				@foreach ($products->forPage(1, 4) as $p)
+				@foreach ($first as $p)
 					@include('includes.partials.singleproduct')
 				@endforeach
 			</div>
 			<div class="category-box-main product-box-main row">
-				@foreach ($products->forPage(2, 4) as $p)
+				@foreach ($second as $p)
 					@include('includes.partials.singleproduct')
 				@endforeach
 			</div>

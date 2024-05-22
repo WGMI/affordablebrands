@@ -19,7 +19,9 @@ class HomeController extends Controller
     public function index()
     {
         $featured = Product::all()->take(8);
-        return view('index')->with(['products' => $featured]);
+        $firstFour = $featured->take(4);
+        $secondFour = $featured->slice(4)->take(4);
+        return view('index')->with(['first' => $firstFour, 'second' => $secondFour]);
     }
 
     public function switchuser(Request $request){
