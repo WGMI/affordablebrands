@@ -23,6 +23,13 @@
 	<link href="{{asset('css/components.css')}}" rel="stylesheet" />
 	<link href="{{asset('css/style.css')}}" rel="stylesheet" />
 	<link href="{{asset('css/media.css')}}" rel="stylesheet" />
+	<!-- Favicons -->
+	<link rel="icon" type="image/x-icon" href="{{ asset('images/icon/logo.png') }}">
+	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/icon/logo.png') }}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/icon/logo.png') }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/icon/logo.png') }}">
+
+
 	<link id="color" href="{{asset('css/color-schemes/default.css')}}" rel="stylesheet" />
 
 	<link href='http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700,700italic' rel='stylesheet'
