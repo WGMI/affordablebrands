@@ -39,10 +39,24 @@
 	## product
 
 -------------------------------------------------------------------*/
+
+/* Add at the beginning of the file */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Update any specific text classes to ensure they use the same font stack */
+.product-title,
+.amount,
+.btn,
+.link,
+.badge {
+    font-family: inherit;
+}
+
 body,
 .page-header>h3>span {
-	font-family: 'Roboto', sans-serif;
-	/*font-family: 'PT Serif', serif;*/
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 body,
@@ -142,8 +156,8 @@ ul {
 .dropdown-header,
 .read-more,
 .logo-block a {
-	/*font-family: 'PT Serif', serif;*/
-	font-family: 'Playfair Display', serif;
+    /* Replace Playfair Display with system font stack */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .logo-block a {
@@ -341,6 +355,7 @@ a {
 
 .header {
 	width: 100%;
+    background-color: #FFEB3B;
 }
 
 /* - Top Header */
@@ -1910,7 +1925,7 @@ a {
 	text-align: center;
 	font-size: 15.89px;
 	color: #00cc33;
-	font-family: 'PT Serif', serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 	font-weight: 700;
 	margin: 0 0 33px 0;
 }
@@ -1946,7 +1961,7 @@ a {
 	font-size: 15.89px;
 	margin: 0 0 18px 0;
 	font-weight: 700;
-	font-family: 'PT Serif', serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .order-summart-text p {
@@ -2205,7 +2220,7 @@ a {
 
 .post-format .entry-date {
 	font-size: 25px;
-	font-family: 'PT Serif', serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 	font-weight: 700;
 }
 
@@ -2716,7 +2731,7 @@ input.qtyminus {
 .total-amount {
 	font-size: 20px;
 	color: #b3aa9b;
-	font-family: 'Playfair Display', serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .form-group input:focus,
@@ -2959,7 +2974,7 @@ input.qtyminus {
 
 .single-product-sidebar .widget_recent_post .shopping-cart-table table tr th {
 	padding: 20px 0;
-	font-family: 'Playfair Display', serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .single-product-sidebar .widget_recent_post .shopping-cart-table table tr td {
@@ -3040,7 +3055,7 @@ input.qtyminus {
 	font-weight: bold;
 	padding-top: 0;
 	padding-bottom: 8px;
-	font-family: 'PT Serif', serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .single-product-sidebar .widget_recent_post .shopping-cart-table.size-chart table tr td {
@@ -3088,7 +3103,7 @@ input.qtyminus {
 .review-box .col-md-5 h3 {
 	margin-top: 7px;
 	font-weight: bold;
-	font-family: 'PT Serif', serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 	font-size: 15px;
 }
 
@@ -3741,7 +3756,7 @@ select:focus {
 	bottom: 36px;
 	left: 0;
 	right: 0;
-	font-family: 'Playfair Display', serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 	color: #b1a599;
 	font-size: 16px;
 }
@@ -3872,7 +3887,7 @@ select:focus {
 .cart-dropdown table tr td>a,
 .cart-dropdown .sub-total span {
 	color: #000;
-	font-family: 'PT Serif', serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 	font-weight: bold;
 }
 
@@ -3906,7 +3921,7 @@ select:focus {
 
 .cart-dropdown .cart-button a {
 	text-transform: uppercase;
-	font-family: 'PT Serif', serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 	color: #fff;
 	background-color: #b3aa9b;
 	padding: 12px 20px;
@@ -3966,4 +3981,271 @@ select:focus {
 
 .mega-dropdown-slider ul .btn {
 	border-radius: 0;
+}
+
+.max-width-300 {
+    max-width: 300px;
+}
+
+.gap-3 {
+    gap: 1rem;
+}
+
+.gap-4 {
+    gap: 1.5rem;
+}
+
+.top-social {
+    list-style: none;
+    padding: 0;
+}
+
+.top-social li a {
+    text-decoration: none;
+}
+
+.top-social li a:hover {
+    opacity: 0.8;
+}
+
+.category-filter-panel {
+    background: rgba(254, 215, 2, 0.16);
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin: 25px 15px 25px 15px;
+    padding: 20px;
+}
+
+.filter-header {
+    background: #fed702;
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin: 0 0 20px 0;
+    border-bottom: none;
+}
+
+.filter-header h4 {
+    margin: 0;
+    color: #0F460E;
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.filter-header i {
+    margin-right: 10px;
+    color: #0F460E;
+}
+
+.category-list {
+    list-style: none;
+    padding: 0 10px;
+    margin: 0;
+}
+
+.category-list li {
+    margin-bottom: 12px;
+    padding: 0 5px;
+}
+
+.category-list .form-check-label {
+    color: #0F460E;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.category-list .form-check-input:checked + .form-check-label {
+    color: #0F460E;
+    font-weight: 500;
+}
+
+/* Custom checkbox styling */
+.category-list .form-check-input {
+    border-color: #0F460E;
+}
+
+.category-list .form-check-input:checked {
+    background-color: #0F460E;
+    border-color: #0F460E;
+}
+
+/* Header Dropdown Styling */
+.nav-item.dropdown {
+    position: relative;
+}
+
+.nav-item.dropdown .dropdown-menu {
+    background: #fff;
+    border: 1px solid rgba(15, 70, 14, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-top: 0.5rem;
+    min-width: 200px;
+    padding: 0.5rem 0;
+}
+
+.nav-item.dropdown .dropdown-menu:before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 20px;
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    transform: rotate(45deg);
+    border-left: 1px solid rgba(15, 70, 14, 0.1);
+    border-top: 1px solid rgba(15, 70, 14, 0.1);
+}
+
+.dropdown-item {
+    color: #0F460E;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(254, 215, 2, 0.1);
+    color: #0F460E;
+}
+
+.dropdown-toggle:after {
+    margin-left: 0.5rem;
+}
+
+.main-product {
+    padding: 0 15px;
+}
+
+.card {
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#instock {
+    border-radius: 15px;
+    color: white;
+    margin-left: 10px;
+    padding: 5px 10px;
+}
+
+/* Add this to your existing CSS */
+#qty-cart-div .primary-btn.pd-cart {
+    background-color: #fed702;
+    color: white;
+    border-radius: 8px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+#qty-cart-div .primary-btn.pd-cart:hover {
+    background-color: #e5c202;
+    color: white;
+}
+
+#qty-cart-div {
+    gap: 15px;
+}
+
+#qty-cart-div .pro-qty {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    background: #fff;
+}
+
+#qty-cart-div .pro-qty input {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    color: #333;
+}
+
+#qty-cart-div .pro-qty input:focus {
+    outline: none;
+}
+
+/* Add these styles to your CSS file */
+.shopping-cart .btn-default,
+.shopping-cart .primary-btn {
+    background-color: #FFD700;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-transform: capitalize;
+    transition: background-color 0.3s ease;
+}
+
+.shopping-cart .btn-default:hover,
+.shopping-cart .primary-btn:hover {
+    background-color: #FFC800;
+    color: white;
+}
+
+/* Add these styles for the estimate-details section */
+.estimate-details .btn-default,
+.estimate-details .primary-btn {
+    background-color: #FFD700;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-transform: capitalize;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.estimate-details .btn-default:hover,
+.estimate-details .primary-btn:hover {
+    background-color: #FFC800;
+    color: white;
+}
+
+.btn {
+    background-color: #FFD700;  /* Yellow color */
+    color: #FFFFFF;             /* White text */
+    border-radius: 5px;         /* Slightly rounded edges */
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #FFC800;  /* Slightly darker yellow on hover */
+}
+
+/* If you have specific button classes, you can target them as well */
+.btn-primary,
+.btn-default,
+.checkout-btn,
+.add-to-cart-btn {
+    background-color: #FFD700;
+    color: #FFFFFF;
+    border-radius: 5px;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-default:hover,
+.checkout-btn:hover,
+.add-to-cart-btn:hover {
+    background-color: #FFC800;
 }

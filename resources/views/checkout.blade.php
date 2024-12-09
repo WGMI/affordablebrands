@@ -91,7 +91,7 @@
                                             </div>
                                             <br>
                                             <div class="order-btn">
-                                                <button onclick="event.preventDefault(); submitForm();" class="btn" id="checkoutButton">Place Order</button>
+                                                <button onclick="event.preventDefault(); submitForm();" class="btn btn-default primary-btn" id="checkoutButton" style="background-color: #FFD700; color: white; border-radius: 5px; border: none;">Place Order</button>
                                             </div>
                                         </div>
                                     </div>
@@ -101,12 +101,6 @@
 					</div>
 				</div>
 			</div><!-- Contact Form Details /- -->
-			<div class="wizard-footer">
-				<a title="Back" href="07_login_register.html"
-					class="btn btn-next btn-fill btn-warning btn-wd btn-sm ">Back</a>
-				<a title="Continue" href="09_payment.html"
-					class="btn btn-next btn-fill btn-warning btn-wd btn-sm">Continue</a>
-			</div>
 		</div>
 	</div>
 

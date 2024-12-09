@@ -74,7 +74,7 @@
                         </tbody>
                     </table>
                     <div class="shopping-cart-footer">
-                        <a title="Continue Shopping" href="{{url('shop')}}" class="btn btn-default">Continue Shopping</a>
+                        <a title="Continue Shopping" href="{{url('shop')}}" class="primary-btn pd-cart btn-default">Continue Shopping</a>
                     </div>
                 @else
                     <div class="page-header bottom-shadow">
@@ -113,7 +113,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <a href="{{url('checkout')}}" type="submit" class="btn btn-default">proceed to checkout</a>
+                            <a href="{{url('checkout')}}" type="submit" class="btn btn-default primary-btn">proceed to checkout</a>
                         </div>
                     </div><!-- col-md-4 /- -->
                 </div>

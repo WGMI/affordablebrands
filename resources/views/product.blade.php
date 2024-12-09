@@ -8,16 +8,37 @@
     <section class="product-shop spad page-details">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Categories</h4>
-                        <ul class="filter-catagories">
-                            @include('includes.partials.categories')
-                        </ul>
-                    </div>
+            <div class="col-md-3">
+            <div class="category-filter-panel">
+                <div class="filter-header">
+                    <h4><i class="fas fa-filter"></i> PRODUCT CATEGORY</h4>
                 </div>
+                <div class="filter-body">
+                    <ul class="category-list">
+                        <li>
+                            <div class="form-check">
+
+                                <label class="form-check-label" for="category1">Instant Tea</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-check">
+                                
+                                <label class="form-check-label" for="category2">Herbal</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-check">
+                                
+                                <label class="form-check-label" for="category3">Flavoured</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
                 <div class="col-lg-9">
-                    <div class="row">
+                    <div class="row" style="margin-top: 20px;">
                         <div class="col-lg-6">
                             <div class="product-pic">
                                 <img class="product-big-img" src="{{asset('storage/'.$product->image)}}" alt="">
@@ -36,10 +57,10 @@
                         <div class="col-lg-6">
                             <div class="product-details">
                                 <div class="pd-title">
-                                    @if($product->categories()->first())
-                                        <span>{{$product->categories()->first()->name}}</span>
-                                    @endif
-                                    <h3>{{$product->name}}</h3>
+                                    <div style="display: flex; flex-direction: row; align-items: center;">
+                                        <h3>{{$product->name}}</h3>
+                                        <span id="instock" style="background-color: green; border-radius: 15px; color: white; margin-left: 20px; padding: 5px 10px;">In Stock</span>
+                                    </div>
                                 </div>
                                 <!--<div class="pd-rating">
                                     <i class="fa fa-star"></i>
@@ -50,58 +71,17 @@
                                     <span>(5)</span>
                                 </div>-->
                                 <div class="pd-desc">
+                                    <h5>{{$product->presentPrice()}}</h5>
                                     <p>{!!$product->description!!}</p>
-                                    <p style="color: {{$stock[1]}}">{{$stock[0]}}</p>
                                     @auth
                                     @if(auth()->user()->role_id == 3)
                                     <h4>{{$product->presentWholesalePrice()}}</h4>
                                     @else
-                                    <h4>{{$product->presentPrice()}}</h4>
                                     @endif
                                     @endauth
                                 </div>
-                                <!--
-                                <div class="pd-desc">
-                                    <p>Lorem ipsum dolor sit amet, consectetur ing elit, sed do eiusmod tempor sum dolor
-                                        sit amet, consectetur adipisicing elit, sed do mod tempor</p>
-                                    <h4>$495.00 <span>629.99</span></h4>
-                                </div>
-                                <div class="pd-color">
-                                    <h6>Color</h6>
-                                    <div class="pd-color-choose">
-                                        <div class="cc-item">
-                                            <input type="radio" id="cc-black">
-                                            <label for="cc-black"></label>
-                                        </div>
-                                        <div class="cc-item">
-                                            <input type="radio" id="cc-yellow">
-                                            <label for="cc-yellow" class="cc-yellow"></label>
-                                        </div>
-                                        <div class="cc-item">
-                                            <input type="radio" id="cc-violet">
-                                            <label for="cc-violet" class="cc-violet"></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="pd-size-choose">
-                                    <div class="sc-item">
-                                        <input type="radio" id="sm-size">
-                                        <label for="sm-size">s</label>
-                                    </div>
-                                    <div class="sc-item">
-                                        <input type="radio" id="md-size">
-                                        <label for="md-size">m</label>
-                                    </div>
-                                    <div class="sc-item">
-                                        <input type="radio" id="lg-size">
-                                        <label for="lg-size">l</label>
-                                    </div>
-                                    <div class="sc-item">
-                                        <input type="radio" id="xl-size">
-                                        <label for="xl-size">xs</label>
-                                    </div>
-                                </div>-->
-                                <div class="quantity">
+                                
+                                <div class="quantity" id="qty-cart-div" style="display: flex; flex-direction: row; align-items: center;">
                                     @if($product->quantity > 0)
                                     <form action="{{url('/cartsingle')}}" method="POST" id="prd{{$product->id}}"> 
                                         @csrf
@@ -122,7 +102,6 @@
                                     <a href="#" class="primary-btn pd-cart" onclick="event.preventDefault(); ajaxProdCall({{$product->id}})">Add To Cart</a>
                                     @endif
                                 </div>
-                                <a href="#" class="primary-btn pd-cart" onclick="event.preventDefault(); ajaxQuickProdCall({{$product->id}})">Quick Purchase</a>
                                 @if(session()->has('error'))
                                     <div class="alert alert-danger">
                                         {{session()->get('error')}}
@@ -142,16 +121,7 @@
                         </div>
                     </div>
                     <div class="product-tab">
-                    <div class="tab-item">
-                        <ul class="nav" role="tablist">
-                            <li>
-                                <a class="active" data-toggle="tab" href="#tab-1" role="tab">DESCRIPTION</a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#tab-2" role="tab">SPECIFICATIONS</a>
-                            </li>
-                        </ul>
-                    </div>
+                    
                     <div class="tab-item-content">
                         <div class="tab-content">
                             <div class="tab-pane fade-in active" id="tab-1" role="tabpanel">
@@ -223,13 +193,11 @@
                     <h2>You May Also Like</h2>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            @foreach($relatedproducts as $p)
-                <div class="col-lg-4 col-sm-6">
-                    @include('includes.partials.singleproduct')
-                </div> 
-            @endforeach
+            <div class="category-box-main product-box-main row">
+                @foreach($relatedproducts as $p)
+                        @include('includes.partials.singleproduct')
+                @endforeach
+            </div>
         </div>
     </div>
 </div>
