@@ -7,7 +7,7 @@
 		<!-- container -->
 		<div class="container">
 			<div class="category-box-main product-box-main">
-				<div class="row">
+				<div class="row" style="margin-top: 20px;">
                     @forelse($products as $p)
                         @include('includes.partials.singleproduct')
                     @empty
