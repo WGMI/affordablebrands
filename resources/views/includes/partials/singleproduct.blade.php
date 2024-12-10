@@ -1,9 +1,8 @@
 <div class="col-12 col-sm-6 col-md-6 col-lg-3 main-product mb-4">
     <div class="card h-100" style="border: none">
-        <img
-        src="{{productImage($p->image)}}"
-        class="card-img-top"
-        alt="Product Image"/>
+        <div class="product-image-container">
+            <img src="{{productImage($p->image)}}" class="card-img-top product-image" alt="{{$p->name}}"/>
+        </div>
         <input type="hidden" value="{{route('cart.post')}}" id="postroute"/>
         <span id="addedmsg{{$p->id}}" class="badge badge-success added"></span>
         <div class="card-body text-center d-flex flex-column justify-content-between">

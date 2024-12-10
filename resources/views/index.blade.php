@@ -49,21 +49,14 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                        <img src="images/slider/1.png" alt="1">
+                        <img src="images/slider/1.jpg" alt="1">
                         <div class="container">
                             <div class="slider-box">
                             </div>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="images/slider/2.png" alt="1">
-                        <div class="container">
-                            <div class="slider-box">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="images/slider/3.png" alt="slide-2">
+                        <img src="images/slider/2.jpg" alt="1">
                         <div class="container">
                             <div class="slider-box">
                             </div>
